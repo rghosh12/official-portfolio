@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useScrollPosition, useActiveSection } from "@/hooks/useScroll";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const NAV_LINKS = [
   { href: "#home", label: "Home" },
@@ -32,64 +33,77 @@ export function Nav() {
           : "bg-transparent",
         shouldHide && "-translate-y-full"
       )}
+      role="banner"
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-12 lg:px-24 flex items-center justify-between h-14">
         {/* Logo / Name */}
         <a
           href="#home"
           className="text-sm font-semibold text-white hover:text-blue-400 transition-colors"
+          aria-label="Rupak Ghosh - Home"
         >
           RG
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6">
-          {NAV_LINKS.map((link) => {
-            const isActive = activeSection === link.href.substring(1);
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "text-xs font-medium transition-all relative group",
-                  isActive 
-                    ? "text-white" 
-                    : "text-gray-400 hover:text-white"
-                )}
-              >
-                {link.label}
-                {/* Active indicator */}
-                <span 
+        <div className="hidden md:flex items-center gap-6">
+          <nav className="flex items-center gap-6" aria-label="Main navigation">
+            {NAV_LINKS.map((link) => {
+              const isActive = activeSection === link.href.substring(1);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all",
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                    "text-xs font-medium transition-all relative group",
+                    isActive 
+                      ? "text-white" 
+                      : "text-gray-400 hover:text-white"
                   )}
-                />
-              </a>
-            );
-          })}
-        </nav>
+                >
+                  {link.label}
+                  <span 
+                    className={cn(
+                      "absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] transition-all",
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    )}
+                    aria-hidden="true"
+                  />
+                </a>
+              );
+            })}
+          </nav>
+          <ThemeToggle />
+        </div>
 
         {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen((o) => !o)}
-          className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileOpen((o) => !o)}
+            className="p-3 text-gray-300 hover:text-white transition-colors min-w-[48px] min-h-[48px] flex items-center justify-center"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile drawer with slide animation */}
       <div
+        id="mobile-menu"
         className={cn(
           "md:hidden border-t border-white/10 bg-black/90 backdrop-blur-md transition-all duration-300",
           mobileOpen 
             ? "max-h-96 opacity-100" 
             : "max-h-0 opacity-0 overflow-hidden"
         )}
+        aria-hidden={!mobileOpen}
       >
-        <nav className="px-6 py-4 flex flex-col gap-4">
+        <nav className="px-6 py-4 flex flex-col gap-4" aria-label="Mobile navigation">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
@@ -97,6 +111,7 @@ export function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
+                aria-current={isActive ? "page" : undefined}
                 className={cn(
                   "text-sm font-medium transition-colors flex items-center gap-2",
                   isActive 
@@ -105,7 +120,7 @@ export function Nav() {
                 )}
               >
                 {isActive && (
-                  <span className="w-1 h-4 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
+                  <span className="w-1 h-4 bg-gradient-to-b from-[var(--accent)] to-[var(--accent-hover)] rounded-full" aria-hidden="true" />
                 )}
                 {link.label}
               </a>
