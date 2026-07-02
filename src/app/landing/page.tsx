@@ -24,7 +24,7 @@ export default function LandingPage() {
       <div 
         className={`
           absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-          transition-all duration-1500 ease-out
+          transition-all duration-300 ease-out
           ${startVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
         `}
       >
@@ -32,8 +32,8 @@ export default function LandingPage() {
           href="/"
           className="
             text-white text-2xl tracking-[0.2em] uppercase font-extralight
-            transition-all duration-700
-            hover:tracking-[0.3em] animate-pulse
+            transition-all duration-300
+            hover:tracking-[0.3em]
             cursor-pointer
           "
         >

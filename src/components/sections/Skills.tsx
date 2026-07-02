@@ -109,7 +109,7 @@ export function Skills() {
                 {/* Progress Bar */}
                 <div className="relative h-2 bg-white/5 rounded-full overflow-hidden">
                   <div
-                    className={`absolute inset-y-0 left-0 ${currentColor.fill} rounded-full transition-all duration-1000 ease-out ${currentColor.glow} shadow-lg`}
+                    className={`absolute inset-y-0 left-0 ${currentColor.fill} rounded-full transition-all duration-300 ease-out ${currentColor.glow} shadow-lg`}
                     style={{
                       width: `${skill.level}%`,
                       transitionDelay: `${index * 50}ms`,
