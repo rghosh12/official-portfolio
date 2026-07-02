@@ -28,7 +28,7 @@ export function Nav() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-200",
         scrolled
-          ? "bg-[var(--surface)]/90 backdrop-blur-sm border-b border-[var(--border)]"
+          ? "bg-black/60 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/20"
           : "bg-transparent"
       )}
     >
@@ -36,7 +36,7 @@ export function Nav() {
         {/* Logo / Name */}
         <a
           href="#home"
-          className="text-sm font-semibold text-[var(--text)] hover:text-[var(--accent)] transition-colors"
+          className="text-sm font-semibold text-white hover:text-[var(--accent)] transition-colors"
         >
           RG
         </a>
@@ -47,7 +47,7 @@ export function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="text-xs font-medium text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+              className="text-xs font-medium text-gray-300 hover:text-white transition-colors"
             >
               {link.label}
             </a>
@@ -57,7 +57,7 @@ export function Nav() {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen((o) => !o)}
-          className="md:hidden p-2 text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+          className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -66,13 +66,13 @@ export function Nav() {
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <nav className="md:hidden border-t border-[var(--border)] bg-[var(--surface)] px-6 py-4 flex flex-col gap-4">
+        <nav className="md:hidden border-t border-white/10 bg-black/80 backdrop-blur-md px-6 py-4 flex flex-col gap-4">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+              className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
             >
               {link.label}
             </a>

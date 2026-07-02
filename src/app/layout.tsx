@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ConditionalStarfield } from "@/components/ui/conditional-starfield";
 
 export const metadata: Metadata = {
   title: "Rupak Ghosh",
@@ -23,7 +24,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <ConditionalStarfield />
+        {children}
+      </body>
     </html>
   );
 }
