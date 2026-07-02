@@ -5,6 +5,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { skills } from '@/data/skills'
 import { ChevronDown } from 'lucide-react'
+import * as SimpleIcons from 'simple-icons/icons'
 
 const categories = {
   languages: { label: 'Languages', color: 'blue' },
@@ -68,24 +69,41 @@ export function Skills() {
                     } overflow-hidden`}
                   >
                     <div className="p-5 pt-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                      {categorySkills.map((skill, skillIndex) => (
-                        <div
-                          key={skill.name}
-                          className="group relative bg-[#1a1f35]/50 backdrop-blur-sm border border-white/5 rounded-lg p-4 hover:border-indigo-500/30 hover:bg-white/5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/10"
-                          style={{
-                            transitionDelay: isOpen ? `${skillIndex * 30}ms` : '0ms',
-                          }}
-                        >
-                          <div className="flex flex-col items-center justify-center gap-3">
-                            <div className="text-4xl transform group-hover:scale-110 transition-transform duration-300">
-                              {skill.icon}
+                      {categorySkills.map((skill, skillIndex) => {
+                        const iconKey = `si${skill.icon.charAt(0).toUpperCase() + skill.icon.slice(1)}` as keyof typeof SimpleIcons
+                        const iconData = SimpleIcons[iconKey]
+                        
+                        return (
+                          <div
+                            key={skill.name}
+                            className="group relative bg-[#1a1f35]/50 backdrop-blur-sm border border-white/5 rounded-lg p-4 hover:border-indigo-500/30 hover:bg-white/5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/10"
+                            style={{
+                              transitionDelay: isOpen ? `${skillIndex * 30}ms` : '0ms',
+                            }}
+                          >
+                            <div className="flex flex-col items-center justify-center gap-3">
+                              <div className="w-12 h-12 transform group-hover:scale-110 transition-transform duration-300">
+                                {iconData && (
+                                  <svg
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-full h-full"
+                                    fill="currentColor"
+                                    style={{ color: `#${iconData.hex}` }}
+                                  >
+                                    <title>{iconData.title}</title>
+                                    <path d={iconData.path} />
+                                  </svg>
+                                )}
+                              </div>
+                              <span className="text-sm font-medium text-gray-300 text-center">
+                                {skill.name}
+                              </span>
                             </div>
-                            <span className="text-sm font-medium text-gray-300 text-center">
-                              {skill.name}
-                            </span>
                           </div>
-                        </div>
-                      ))}
+                        )
+                      })}
                     </div>
                   </div>
                 </div>
