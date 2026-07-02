@@ -12,8 +12,8 @@ import {
 
 export function Projects() {
   return (
-    <section id="projects" className="px-6 sm:px-12 lg:px-24 py-20 border-b border-white/10">
-      <div className="max-w-4xl">
+    <section id="projects" className="px-6 sm:px-12 lg:px-24 py-32">
+      <div className="max-w-[800px]">
         <AnimatedSection>
           <SectionHeading
             label="Work"
@@ -113,12 +113,11 @@ function ProjectGroup({
   children: React.ReactNode;
 }) {
   return (
-    <div className="mb-12">
-      <h3 className="text-xs font-semibold tracking-widest uppercase text-[var(--muted)] mb-4 flex items-center gap-2">
-        <span className="w-4 h-px bg-[var(--border)]" />
+    <div className="mb-16">
+      <h3 className="text-xs font-semibold tracking-wider uppercase text-[var(--muted)] mb-8">
         {title}
       </h3>
-      <div className="flex flex-col gap-4">{children}</div>
+      <div className="flex flex-col gap-8">{children}</div>
     </div>
   );
 }
@@ -131,13 +130,7 @@ function ProjectCard({
   highlight?: boolean;
 }) {
   return (
-    <div
-      className={`glass-card rounded-xl p-5 transition-all hover:bg-white/5 border ${
-        highlight
-          ? "bg-amber-950/20 border-amber-800/30 hover:border-amber-600/50"
-          : "border-white/10 hover:border-white/20"
-      }`}
-    >
+    <div className={`py-6 ${highlight ? "border-l-2 border-amber-500 pl-4" : ""}`}>
       {children}
     </div>
   );
@@ -160,10 +153,9 @@ function ProjectCardHeader({
 
 function BulletList({ bullets }: { bullets: readonly string[] }) {
   return (
-    <ul className="flex flex-col gap-1.5 mb-3">
-      {bullets.map((b, i) => (
-        <li key={i} className="flex gap-2 text-sm text-gray-400 leading-relaxed">
-          <span className="mt-2 w-1 h-1 rounded-full bg-gray-400 shrink-0" />
+    <ul className="flex flex-col gap-2 mb-4">
+      {bullets.slice(0, 2).map((b, i) => (
+        <li key={i} className="text-sm text-gray-400 leading-relaxed">
           {b}
         </li>
       ))}
@@ -173,8 +165,8 @@ function BulletList({ bullets }: { bullets: readonly string[] }) {
 
 function TagRow({ tags }: { tags: readonly string[] }) {
   return (
-    <div className="flex flex-wrap gap-1.5 mb-3">
-      {tags.map((t) => (
+    <div className="flex flex-wrap gap-2 mb-4">
+      {tags.slice(0, 4).map((t) => (
         <Tag key={t}>{t}</Tag>
       ))}
     </div>
