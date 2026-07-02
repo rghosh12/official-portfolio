@@ -1,6 +1,7 @@
 import { MapPin, Mail, Phone, Link2, GitBranch } from "lucide-react";
 import { profile } from "@/data/resume";
 import Image from "next/image";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 export function Hero() {
   return (
@@ -96,6 +97,9 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <ScrollIndicator />
     </section>
   );
 }
