@@ -4,57 +4,35 @@ import { useState } from 'react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { skills } from '@/data/skills'
-import { Code2, Layers, FlaskConical, Wrench } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 const categories = {
-  languages: { label: 'Languages', icon: Code2, color: 'blue' },
-  frameworks: { label: 'Frameworks', icon: Layers, color: 'purple' },
-  research: { label: 'Research', icon: FlaskConical, color: 'emerald' },
-  tools: { label: 'Tools', icon: Wrench, color: 'amber' },
+  languages: { label: 'Languages', color: 'blue' },
+  frontend: { label: 'Frontend', color: 'purple' },
+  aiDevelopment: { label: 'AI Development', color: 'indigo' },
+  backend: { label: 'Backend', color: 'emerald' },
+  database: { label: 'Database', color: 'cyan' },
+  awsServices: { label: 'AWS Services', color: 'amber' },
 } as const
 
 type Category = keyof typeof skills
 
 export function Skills() {
-  const [activeCategory, setActiveCategory] = useState<Category>('languages')
+  const [openCategories, setOpenCategories] = useState<Set<Category>>(new Set(['languages']))
 
-  const colorClasses = {
-    blue: {
-      bg: 'bg-blue-500/10',
-      text: 'text-blue-400',
-      border: 'border-blue-500/30',
-      fill: 'bg-blue-500',
-      glow: 'shadow-blue-500/50',
-    },
-    purple: {
-      bg: 'bg-purple-500/10',
-      text: 'text-purple-400',
-      border: 'border-purple-500/30',
-      fill: 'bg-purple-500',
-      glow: 'shadow-purple-500/50',
-    },
-    emerald: {
-      bg: 'bg-emerald-500/10',
-      text: 'text-emerald-400',
-      border: 'border-emerald-500/30',
-      fill: 'bg-emerald-500',
-      glow: 'shadow-emerald-500/50',
-    },
-    amber: {
-      bg: 'bg-amber-500/10',
-      text: 'text-amber-400',
-      border: 'border-amber-500/30',
-      fill: 'bg-amber-500',
-      glow: 'shadow-amber-500/50',
-    },
+  const toggleCategory = (category: Category) => {
+    const newOpen = new Set(openCategories)
+    if (newOpen.has(category)) {
+      newOpen.delete(category)
+    } else {
+      newOpen.add(category)
+    }
+    setOpenCategories(newOpen)
   }
-
-  const currentColor = colorClasses[categories[activeCategory].color]
-  const currentSkills = skills[activeCategory]
 
   return (
     <section id="skills" className="px-6 sm:px-12 lg:px-24 py-20 border-b border-white/10">
-      <div className="max-w-4xl">
+      <div className="max-w-6xl">
         <AnimatedSection>
           <SectionHeading
             label="Expertise"
@@ -63,93 +41,58 @@ export function Skills() {
           />
         </AnimatedSection>
 
-        {/* Category Tabs */}
-        <AnimatedSection delay={100}>
-          <div className="flex flex-wrap gap-3 mb-8">
-            {Object.entries(categories).map(([key, { label, icon: Icon, color }]) => {
-              const isActive = activeCategory === key
-              const colors = colorClasses[color]
-              
-              return (
-                <button
-                  key={key}
-                  onClick={() => setActiveCategory(key as Category)}
-                  className={`
-                    flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
-                    transition-all duration-300 border
-                    ${isActive 
-                      ? `${colors.bg} ${colors.text} ${colors.border} shadow-lg ${colors.glow}` 
-                      : 'bg-white/5 text-gray-400 border-white/10 hover:bg-white/10'
-                    }
-                  `}
-                >
-                  <Icon size={16} />
-                  {label}
-                </button>
-              )
-            })}
-          </div>
-        </AnimatedSection>
+        <div className="space-y-4 mt-8">
+          {Object.entries(categories).map(([key, { label }], categoryIndex) => {
+            const category = key as Category
+            const isOpen = openCategories.has(category)
+            const categorySkills = skills[category]
 
-        {/* Skills Grid */}
-        <div className="grid gap-4">
-          {currentSkills.map((skill, index) => (
-            <AnimatedSection key={skill.name} delay={index * 50} animation="slide-left">
-              <div className="glass-card p-4 rounded-lg hover:bg-white/5 transition-all group">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">{skill.icon}</span>
-                    <span className="font-medium text-white">{skill.name}</span>
-                  </div>
-                  <span className={`text-sm font-semibold ${currentColor.text}`}>
-                    {skill.level}%
-                  </span>
-                </div>
-                
-                {/* Progress Bar */}
-                <div className="relative h-2 bg-white/5 rounded-full overflow-hidden">
+            return (
+              <AnimatedSection key={key} delay={categoryIndex * 50}>
+                <div className="glass-card rounded-xl overflow-hidden border border-white/10">
+                  <button
+                    onClick={() => toggleCategory(category)}
+                    className="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors"
+                  >
+                    <span className="text-lg font-medium text-indigo-300">{label}</span>
+                    <ChevronDown
+                      className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+
                   <div
-                    className={`absolute inset-y-0 left-0 ${currentColor.fill} rounded-full transition-all duration-300 ease-out ${currentColor.glow} shadow-lg`}
-                    style={{
-                      width: `${skill.level}%`,
-                      transitionDelay: `${index * 50}ms`,
-                    }}
-                  />
+                    className={`transition-all duration-300 ease-in-out ${
+                      isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                    } overflow-hidden`}
+                  >
+                    <div className="p-5 pt-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                      {categorySkills.map((skill, skillIndex) => (
+                        <div
+                          key={skill.name}
+                          className="group relative bg-[#1a1f35]/50 backdrop-blur-sm border border-white/5 rounded-lg p-4 hover:border-indigo-500/30 hover:bg-white/5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/10"
+                          style={{
+                            transitionDelay: isOpen ? `${skillIndex * 30}ms` : '0ms',
+                          }}
+                        >
+                          <div className="flex flex-col items-center justify-center gap-3">
+                            <div className="text-4xl transform group-hover:scale-110 transition-transform duration-300">
+                              {skill.icon}
+                            </div>
+                            <span className="text-sm font-medium text-gray-300 text-center">
+                              {skill.name}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </AnimatedSection>
-          ))}
+              </AnimatedSection>
+            )
+          })}
         </div>
-
-        {/* Summary Stats */}
-        <AnimatedSection delay={400}>
-          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="glass-card p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-blue-400 mb-1">
-                {skills.languages.length + skills.frameworks.length}
-              </div>
-              <div className="text-xs text-gray-400">Languages & Frameworks</div>
-            </div>
-            <div className="glass-card p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-emerald-400 mb-1">
-                {skills.research.length}
-              </div>
-              <div className="text-xs text-gray-400">Research Tools</div>
-            </div>
-            <div className="glass-card p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-amber-400 mb-1">
-                {skills.tools.length}
-              </div>
-              <div className="text-xs text-gray-400">Dev Tools</div>
-            </div>
-            <div className="glass-card p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-purple-400 mb-1">
-                {Object.values(skills).flat().length}
-              </div>
-              <div className="text-xs text-gray-400">Total Skills</div>
-            </div>
-          </div>
-        </AnimatedSection>
       </div>
     </section>
   )
