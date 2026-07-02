@@ -1,7 +1,8 @@
-import { GitBranch, ExternalLink as ExtIcon } from "lucide-react";
+import { GitBranch, ExternalLink as ExtIcon, Star } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Tag } from "@/components/ui/Tag";
 import { ExternalLink } from "@/components/ui/ExternalLink";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import {
   researchProjects,
   personalProjects,
@@ -11,77 +12,90 @@ import {
 
 export function Projects() {
   return (
-    <section id="projects" className="px-6 sm:px-12 lg:px-24 py-20 border-b border-[var(--border)]">
+    <section id="projects" className="px-6 sm:px-12 lg:px-24 py-20 border-b border-white/10">
       <div className="max-w-4xl">
-        <SectionHeading
-          label="Work"
-          title="Projects"
-          description="Research, personal, and hackathon builds."
-        />
+        <AnimatedSection>
+          <SectionHeading
+            label="Work"
+            title="Projects"
+            description="Research, personal, and hackathon builds."
+          />
+        </AnimatedSection>
 
         {/* Research Projects */}
         <ProjectGroup title="Research Projects">
-          {researchProjects.map((p) => (
-            <ProjectCard key={p.id}>
-              <ProjectCardHeader title={p.title} context={p.context} />
-              <BulletList bullets={p.bullets} />
-              <TagRow tags={p.tags} />
-              {p.link && <ExternalLink href={p.link}>View Project</ExternalLink>}
-            </ProjectCard>
+          {researchProjects.map((p, index) => (
+            <AnimatedSection key={p.id} delay={index * 50} animation="fade-up">
+              <ProjectCard>
+                <ProjectCardHeader title={p.title} context={p.context} />
+                <BulletList bullets={p.bullets} />
+                <TagRow tags={p.tags} />
+                {p.link && <ExternalLink href={p.link}>View Project</ExternalLink>}
+              </ProjectCard>
+            </AnimatedSection>
           ))}
         </ProjectGroup>
 
         {/* Personal Projects */}
         <ProjectGroup title="Personal Projects">
-          {personalProjects.map((p) => (
-            <ProjectCard key={p.id}>
-              <ProjectCardHeader title={p.title} context={p.context} />
-              <BulletList bullets={p.bullets} />
-              <TagRow tags={p.tags} />
-              {p.link && <ExternalLink href={p.link}>{p.linkLabel ?? "View Project"}</ExternalLink>}
-            </ProjectCard>
+          {personalProjects.map((p, index) => (
+            <AnimatedSection key={p.id} delay={index * 50} animation="fade-up">
+              <ProjectCard>
+                <ProjectCardHeader title={p.title} context={p.context} />
+                <BulletList bullets={p.bullets} />
+                <TagRow tags={p.tags} />
+                {p.link && <ExternalLink href={p.link}>{p.linkLabel ?? "View Project"}</ExternalLink>}
+              </ProjectCard>
+            </AnimatedSection>
           ))}
         </ProjectGroup>
 
         {/* Hackathon Projects */}
         <ProjectGroup title="Hackathon Projects">
-          {hackathonProjects.map((p) => (
-            <ProjectCard key={p.id} highlight>
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-sm font-bold text-amber-600 dark:text-amber-400">
-                  {p.award}
-                </span>
-                <span className="text-xs text-[var(--muted)]">— {p.event}</span>
-              </div>
-              <ProjectCardHeader title={p.title} />
-              <p className="text-sm text-[var(--muted)] leading-relaxed mb-3">{p.description}</p>
-              {p.tagline && (
-                <p className="text-sm italic text-[var(--muted)] mb-3 border-l-2 border-[var(--accent)] pl-3">
-                  &ldquo;{p.tagline}&rdquo;
-                </p>
-              )}
-              <TagRow tags={p.tags} />
-              {p.link && (
-                <ExternalLink href={p.link}>
-                  {p.linkLabel === "GitHub" ? (
-                    <><GitBranch size={13} /> {p.linkLabel}</>
-                  ) : (
-                    <><ExtIcon size={13} /> {p.linkLabel}</>
-                  )}
-                </ExternalLink>
-              )}
-            </ProjectCard>
+          {hackathonProjects.map((p, index) => (
+            <AnimatedSection key={p.id} delay={index * 50} animation="scale-in">
+              <ProjectCard highlight>
+                <div className="flex items-start justify-between gap-4 mb-3">
+                  <div className="flex items-center gap-2">
+                    <Star size={16} className="text-amber-400 fill-amber-400" />
+                    <span className="text-sm font-bold text-amber-400">
+                      {p.award}
+                    </span>
+                    <span className="text-xs text-gray-400">— {p.event}</span>
+                  </div>
+                </div>
+                <ProjectCardHeader title={p.title} />
+                <p className="text-sm text-gray-400 leading-relaxed mb-3">{p.description}</p>
+                {p.tagline && (
+                  <p className="text-sm italic text-gray-300 mb-3 border-l-2 border-amber-500 pl-3">
+                    &ldquo;{p.tagline}&rdquo;
+                  </p>
+                )}
+                <TagRow tags={p.tags} />
+                {p.link && (
+                  <ExternalLink href={p.link}>
+                    {p.linkLabel === "GitHub" ? (
+                      <><GitBranch size={13} /> {p.linkLabel}</>
+                    ) : (
+                      <><ExtIcon size={13} /> {p.linkLabel}</>
+                    )}
+                  </ExternalLink>
+                )}
+              </ProjectCard>
+            </AnimatedSection>
           ))}
         </ProjectGroup>
 
         {/* Mini Projects */}
         <ProjectGroup title="Mini Projects">
-          {miniProjects.map((p) => (
-            <ProjectCard key={p.id}>
-              <ProjectCardHeader title={p.title} context={p.context} />
-              <p className="text-sm text-[var(--muted)] leading-relaxed mb-3">{p.description}</p>
-              {p.link && <ExternalLink href={p.link}>{p.linkLabel}</ExternalLink>}
-            </ProjectCard>
+          {miniProjects.map((p, index) => (
+            <AnimatedSection key={p.id} delay={index * 50} animation="fade-up">
+              <ProjectCard>
+                <ProjectCardHeader title={p.title} context={p.context} />
+                <p className="text-sm text-gray-400 leading-relaxed mb-3">{p.description}</p>
+                {p.link && <ExternalLink href={p.link}>{p.linkLabel}</ExternalLink>}
+              </ProjectCard>
+            </AnimatedSection>
           ))}
         </ProjectGroup>
       </div>
@@ -118,10 +132,10 @@ function ProjectCard({
 }) {
   return (
     <div
-      className={`rounded-xl border p-5 transition-colors hover:border-[var(--accent)] ${
+      className={`glass-card rounded-xl p-5 transition-all hover:bg-white/5 hover:scale-[1.02] hover:-translate-y-1 border ${
         highlight
-          ? "bg-amber-50/50 border-amber-200 dark:bg-amber-950/20 dark:border-amber-800"
-          : "bg-[var(--surface-2)] border-[var(--border)]"
+          ? "bg-amber-950/20 border-amber-800/30 hover:border-amber-600/50 hover:shadow-lg hover:shadow-amber-500/20"
+          : "border-white/10 hover:border-white/20"
       }`}
     >
       {children}
@@ -138,8 +152,8 @@ function ProjectCardHeader({
 }) {
   return (
     <div className="mb-3">
-      <h4 className="font-semibold text-[var(--text)] text-base leading-snug">{title}</h4>
-      {context && <p className="text-xs text-[var(--muted)] mt-0.5">{context}</p>}
+      <h4 className="font-semibold text-white text-base leading-snug">{title}</h4>
+      {context && <p className="text-xs text-gray-400 mt-0.5">{context}</p>}
     </div>
   );
 }
@@ -148,8 +162,8 @@ function BulletList({ bullets }: { bullets: readonly string[] }) {
   return (
     <ul className="flex flex-col gap-1.5 mb-3">
       {bullets.map((b, i) => (
-        <li key={i} className="flex gap-2 text-sm text-[var(--muted)] leading-relaxed">
-          <span className="mt-2 w-1 h-1 rounded-full bg-[var(--muted)] shrink-0" />
+        <li key={i} className="flex gap-2 text-sm text-gray-400 leading-relaxed">
+          <span className="mt-2 w-1 h-1 rounded-full bg-gray-400 shrink-0" />
           {b}
         </li>
       ))}
