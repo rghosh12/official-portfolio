@@ -32,16 +32,16 @@ export function Experience() {
             {experience.map((exp, index) => (
               <AnimatedSection key={exp.id} delay={index * 100} animation="fade-up">
                 <div className="relative">
-                  {/* Animated dot */}
+                  {/* Timeline dot */}
                   <div
                     className={`absolute -left-[17px] top-2 w-2.5 h-2.5 rounded-full border-2 transition-all ${
                       exp.current
-                        ? "bg-emerald-500 border-emerald-300 shadow-lg shadow-emerald-500/50 animate-pulse"
-                        : "bg-blue-500 border-blue-300 shadow-lg shadow-blue-500/30"
+                        ? "bg-emerald-500 border-emerald-300"
+                        : "bg-blue-500 border-blue-300"
                     }`}
                   />
 
-                  <div className="glass-card rounded-xl p-5 hover:bg-white/5 transition-all hover:scale-[1.01] border border-white/10 hover:border-white/20 group">
+                  <div className="glass-card rounded-xl p-5 hover:bg-white/5 transition-all border border-white/10 hover:border-white/20 group">
                     {/* Header */}
                     <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                       <div className="flex items-start gap-3">

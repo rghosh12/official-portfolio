@@ -132,9 +132,9 @@ function ProjectCard({
 }) {
   return (
     <div
-      className={`glass-card rounded-xl p-5 transition-all hover:bg-white/5 hover:scale-[1.02] hover:-translate-y-1 border ${
+      className={`glass-card rounded-xl p-5 transition-all hover:bg-white/5 border ${
         highlight
-          ? "bg-amber-950/20 border-amber-800/30 hover:border-amber-600/50 hover:shadow-lg hover:shadow-amber-500/20"
+          ? "bg-amber-950/20 border-amber-800/30 hover:border-amber-600/50"
           : "border-white/10 hover:border-white/20"
       }`}
     >

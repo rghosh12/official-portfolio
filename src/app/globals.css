@@ -9,42 +9,42 @@
 :root {
   /* ─── Minimalist Color System ──────────────────────────── */
   /* Base colors - Refined neutrals */
-  --surface:   rgba(18, 18, 18, 0.92);
-  --surface-2: rgba(28, 28, 28, 0.88);
-  --surface-3: rgba(38, 38, 38, 0.88);
-  --border:    rgba(85, 85, 85, 0.3);
-  --border-hover: rgba(120, 120, 120, 0.5);
-  --text:      #f0f0f0;
-  --text-secondary: #d8d8d8;
-  --muted:     #9a9a9a;
-  --muted-dark: #707070;
+  --surface:   rgba(10, 10, 10, 0.95);
+  --surface-2: rgba(23, 23, 23, 0.92);
+  --surface-3: rgba(38, 38, 38, 0.92);
+  --border:    rgba(82, 82, 82, 0.3);
+  --border-hover: rgba(115, 115, 115, 0.5);
+  --text:      #fafafa;
+  --text-secondary: #e5e5e5;
+  --muted:     #a1a1a1;
+  --muted-dark: #737373;
   
-  /* Brand colors - Sophisticated sage green & warm gray */
-  --accent:    #8b9d83;
-  --accent-hover: #6f8267;
-  --accent-light: #a4b89b;
+  /* Brand colors - Professional Blue with excellent contrast */
+  --accent:    #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-light: #60a5fa;
   
-  /* Semantic colors - Muted elegance */
-  --success:   #7a9d7e;
-  --success-light: #8fb094;
-  --warning:   #b8956a;
-  --warning-light: #cca876;
-  --error:     #b47d7d;
-  --error-light: #c79292;
-  --info:      #7d98a8;
-  --info-light: #92aab9;
+  /* Semantic colors - Clear and accessible */
+  --success:   #10b981;
+  --success-light: #34d399;
+  --warning:   #f59e0b;
+  --warning-light: #fbbf24;
+  --error:     #ef4444;
+  --error-light: #f87171;
+  --info:      #06b6d4;
+  --info-light: #22d3ee;
   
-  /* Gradient colors - Subtle sophistication */
-  --gradient-primary: linear-gradient(135deg, #6b7d6a 0%, #4a5d57 100%);
-  --gradient-accent: linear-gradient(135deg, #8b9d83 0%, #7d8e95 100%);
-  --gradient-success: linear-gradient(135deg, #7a9d7e 0%, #6a8a6e 100%);
-  --gradient-cosmic: linear-gradient(135deg, #2d3436 0%, #4a5d57 50%, #6b7d6a 100%);
+  /* Gradient colors - Modern and refined */
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  --gradient-accent: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-cosmic: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   
   /* ─── Typography System ─────────────────────────────────── */
   /* Font families */
-  --font-sans: "Comfortaa", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", monospace;
-  --font-display: "Comfortaa", system-ui, sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
   
   /* Font weights */
   --font-light: 300;
@@ -138,40 +138,40 @@
 
 [data-theme="light"] {
   /* Base colors - Clean, minimal light mode */
-  --surface:   rgba(252, 252, 252, 0.95);
-  --surface-2: rgba(247, 247, 247, 0.92);
-  --surface-3: rgba(242, 242, 242, 0.92);
-  --border:    rgba(215, 215, 215, 0.6);
-  --border-hover: rgba(180, 180, 180, 0.7);
-  --text:      #1a1a1a;
-  --text-secondary: #2a2a2a;
-  --muted:     #6a6a6a;
-  --muted-dark: #8a8a8a;
+  --surface:   rgba(250, 250, 250, 0.98);
+  --surface-2: rgba(244, 244, 245, 0.95);
+  --surface-3: rgba(228, 228, 231, 0.95);
+  --border:    rgba(212, 212, 216, 0.6);
+  --border-hover: rgba(161, 161, 170, 0.7);
+  --text:      #09090b;
+  --text-secondary: #18181b;
+  --muted:     #52525b;
+  --muted-dark: #71717a;
   
-  /* Brand colors - Refined for light mode */
-  --accent:    #6f8267;
-  --accent-hover: #5a6d52;
-  --accent-light: #8b9d83;
+  /* Brand colors - Professional Blue for light mode */
+  --accent:    #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-light: #3b82f6;
   
-  /* Semantic colors - Muted for elegance */
-  --success:   #6a8a6e;
-  --success-light: #7a9d7e;
-  --warning:   #a88050;
-  --warning-light: #b8956a;
-  --error:     #a86a6a;
-  --error-light: #b47d7d;
-  --info:      #6d8898;
-  --info-light: #7d98a8;
+  /* Semantic colors - Clear for light mode */
+  --success:   #059669;
+  --success-light: #10b981;
+  --warning:   #d97706;
+  --warning-light: #f59e0b;
+  --error:     #dc2626;
+  --error-light: #ef4444;
+  --info:      #0891b2;
+  --info-light: #06b6d4;
   
-  /* Light mode shadows - Softer */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
-  --shadow-glow: 0 0 20px rgba(111, 130, 103, 0.2);
-  --shadow-glow-lg: 0 0 40px rgba(111, 130, 103, 0.3);
+  /* Light mode shadows - Refined */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.2);
+  --shadow-glow-lg: 0 0 40px rgba(59, 130, 246, 0.3);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -197,7 +197,7 @@ body {
   font-family: var(--font-sans);
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
-  font-weight: var(--font-bold);
+  font-weight: var(--font-normal);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -335,69 +335,36 @@ select:focus-visible {
    GLASSMORPHISM & EFFECTS
    ═══════════════════════════════════════════════════════════ */
 
-/* Section backdrop effects */
+/* Section backdrop effects - Simplified */
 section {
   position: relative;
 }
 
-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at top, 
-    rgba(15, 15, 14, 0.3) 0%, 
-    rgba(15, 15, 14, 0.8) 100%
-  );
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Glass card effect */
+/* Glass card effect - Simplified for better performance and clarity */
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 
-    0 8px 16px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Gradient border effect */
+/* Gradient border effect - Simplified */
 .gradient-border {
   position: relative;
   background: var(--surface-2);
+  border: 1px solid var(--accent);
 }
 
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: var(--gradient-accent);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-/* Glow effect */
+/* Glow effect - Simplified */
 .glow {
-  box-shadow: var(--shadow-glow);
   transition: box-shadow var(--transition-smooth);
 }
 
 .glow:hover {
-  box-shadow: var(--shadow-glow-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -477,14 +444,7 @@ section::before {
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
+/* Removed shimmer animation */
 
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
@@ -498,17 +458,7 @@ section::before {
   animation: scaleIn 0.4s ease-out forwards;
 }
 
-/* Shimmer effect for buttons - Refined */
-.shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--accent) 0%,
-    var(--accent-light) 50%,
-    var(--accent) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
+/* Removed shimmer effect - too distracting */
 
 /* ═══════════════════════════════════════════════════════════
    RESPONSIVE TYPOGRAPHY
