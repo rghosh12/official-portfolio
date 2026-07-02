@@ -4,7 +4,13 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
 export function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, mounted } = useTheme();
+
+  if (!mounted) {
+    return (
+      <div className="p-3 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] min-w-[48px] min-h-[48px]" />
+    );
+  }
 
   return (
     <button

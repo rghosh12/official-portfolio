@@ -15,9 +15,6 @@ export const metadata: Metadata = generateMetadata({
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const personSchema = generatePersonSchema();
-  const websiteSchema = generateWebSiteSchema();
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -29,14 +26,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generatePersonSchema()) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebSiteSchema()) }}
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <SkipToContent />
         <ThemeProvider>
           <ConditionalStarfield />
