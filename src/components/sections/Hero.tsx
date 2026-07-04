@@ -1,4 +1,4 @@
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/resume";
 
 const affiliations = [
@@ -50,6 +50,15 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text)] text-sm font-semibold transition-colors"
             >
               Get in Touch
+            </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[var(--border)] hover:border-[var(--accent)] text-[var(--muted)] hover:text-[var(--text)] text-sm font-semibold transition-colors"
+            >
+              <Download size={16} />
+              View Résumé
             </a>
           </div>
 

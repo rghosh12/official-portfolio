@@ -10,8 +10,15 @@ import { generateMetadata, generatePersonSchema, generateWebSiteSchema } from "@
 export const metadata: Metadata = generateMetadata({
   title: "Rupak Ghosh",
   description:
-    "Cell & Molecular Biology researcher and developer. Research experience across UT Austin, IISc, Seattle University, and Equilibrium Earth.",
-  keywords: ["Biology Research", "UT Austin", "Bioinformatics", "Data Science"],
+    "Computational neuroscience and machine-learning researcher bridging wet-lab biology and code. Research across UT Austin, IISc, Seattle University, and Equilibrium Earth.",
+  keywords: [
+    "Computational Neuroscience",
+    "Machine Learning",
+    "Bioinformatics",
+    "Research",
+    "UT Austin",
+    "IISc",
+  ],
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

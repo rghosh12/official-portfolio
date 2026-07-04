@@ -82,7 +82,7 @@ export function Nav() {
           <ThemeToggle />
           <button
             onClick={() => setMobileOpen((o) => !o)}
-            className="p-3 text-gray-300 hover:text-white transition-colors min-w-[48px] min-h-[48px] flex items-center justify-center"
+            className="p-3 text-[var(--muted)] hover:text-[var(--text)] transition-colors min-w-[48px] min-h-[48px] flex items-center justify-center"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"

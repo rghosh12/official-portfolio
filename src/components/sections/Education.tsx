@@ -42,7 +42,7 @@ export function Education() {
                     <Calendar size={12} />
                     {edu.graduation}
                     {edu.current && (
-                      <span className="ml-1 bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded text-[10px] font-semibold">
+                      <span className="ml-1 bg-[var(--success)]/15 text-[var(--success-light)] px-1.5 py-0.5 rounded text-[10px] font-semibold">
                         Current
                       </span>
                     )}

@@ -159,8 +159,8 @@ function ProjectCard({
           <Icon size={18} className="text-[var(--accent)]" />
         </span>
         {award ? (
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400">
-            <Trophy size={13} className="fill-amber-400" />
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--warning-light)]">
+            <Trophy size={13} className="fill-[var(--warning-light)]" />
             {award.replace(/^🏆\s*/, "")}
           </span>
         ) : (
