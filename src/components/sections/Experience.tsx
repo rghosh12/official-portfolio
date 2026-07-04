@@ -29,7 +29,7 @@ function ExperienceCard({ exp }: { exp: ExperienceItem }) {
   return (
     <article className="bg-[var(--surface-2)] border border-[var(--border)] rounded-xl p-6 hover:border-[var(--accent)] transition-colors">
       <div className="flex items-start gap-4">
-        <OrgLogo org={exp.org} size={52} className="mt-0.5" />
+        <OrgLogo org={exp.org} size={48} className="mt-0.5" />
 
         <div className="flex-1 min-w-0">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">

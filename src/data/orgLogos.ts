@@ -5,29 +5,44 @@ export type OrgLogoKey =
   | "iisc"
   | "equilibrium-earth";
 
-export const orgLogoMeta: Record<
-  OrgLogoKey,
-  { src: string; alt: string; monogram: string }
-> = {
+export type OrgLogoMeta = {
+  src: string;
+  alt: string;
+  monogram: string;
+  /** How the image fills the square box */
+  fit?: "contain" | "cover";
+  /** Inner padding class when using contain */
+  padding?: string;
+};
+
+export const orgLogoMeta: Record<OrgLogoKey, OrgLogoMeta> = {
   "ut-austin": {
     src: "/logos/ut-austin.png",
     alt: "The University of Texas at Austin",
     monogram: "UT",
+    fit: "cover",
+    padding: "p-0",
   },
   "seattle-university": {
     src: "/logos/seattle-university.png",
     alt: "Seattle University",
     monogram: "SU",
+    fit: "cover",
+    padding: "p-0",
   },
   iisc: {
     src: "/logos/iisc.png",
     alt: "Indian Institute of Science",
     monogram: "IS",
+    fit: "contain",
+    padding: "p-1.5",
   },
   "equilibrium-earth": {
     src: "/logos/equilibrium-earth.png",
     alt: "Equilibrium Earth",
     monogram: "EE",
+    fit: "contain",
+    padding: "p-2",
   },
 };
 
