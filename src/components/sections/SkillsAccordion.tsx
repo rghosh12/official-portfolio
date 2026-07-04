@@ -9,7 +9,7 @@ export type ResolvedIcon = { title: string; hex: string; path: string } | null
 export type SkillCategory = {
   key: string
   label: string
-  items: { name: string; icon: ResolvedIcon }[]
+  items: { name: string; icon: ResolvedIcon; image?: string }[]
 }
 
 function monogram(name: string) {
@@ -68,7 +68,14 @@ export function SkillsAccordion({ categories }: { categories: SkillCategory[] })
                     >
                       <div className="flex flex-col items-center justify-center gap-3">
                         <div className="w-11 h-11 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                          {skill.icon ? (
+                          {skill.image ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={skill.image}
+                              alt=""
+                              className="w-full h-full object-contain"
+                            />
+                          ) : skill.icon ? (
                             <svg
                               role="img"
                               viewBox="0 0 24 24"

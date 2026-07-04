@@ -15,7 +15,7 @@ export const orgLogoMeta: Record<
     monogram: "UT",
   },
   "seattle-university": {
-    src: "/logos/seattle-university.svg",
+    src: "/logos/seattle-university.png",
     alt: "Seattle University",
     monogram: "SU",
   },
@@ -25,7 +25,7 @@ export const orgLogoMeta: Record<
     monogram: "IS",
   },
   "equilibrium-earth": {
-    src: "/logos/equilibrium-earth.svg",
+    src: "/logos/equilibrium-earth.png",
     alt: "Equilibrium Earth",
     monogram: "EE",
   },

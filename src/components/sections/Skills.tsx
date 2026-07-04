@@ -35,7 +35,11 @@ export function Skills() {
   ).map((key) => ({
     key,
     label: categoryLabels[key],
-    items: skills[key].map((s) => ({ name: s.name, icon: resolveIcon(s.icon) })),
+    items: skills[key].map((s) => ({
+      name: s.name,
+      icon: resolveIcon(s.icon),
+      ...("image" in s && s.image ? { image: s.image } : {}),
+    })),
   }))
 
   return (

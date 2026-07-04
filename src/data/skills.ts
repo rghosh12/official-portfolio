@@ -20,7 +20,7 @@ export const skills = {
   aiDevelopment: [
     { name: "Cursor", icon: "cursor" },
     { name: "Claude Code", icon: "anthropic" },
-    { name: "Codex", icon: "openai" },
+    { name: "Codex", icon: "", image: "/logos/codex.png" },
     { name: "Amazon Q", icon: "amazonwebservices" },
   ],
   backend: [
