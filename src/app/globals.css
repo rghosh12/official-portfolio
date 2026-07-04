@@ -23,6 +23,10 @@
   --accent:    #3b82f6;
   --accent-hover: #2563eb;
   --accent-light: #60a5fa;
+
+  /* Page backdrop (static, restrained) */
+  --page-bg:   #0a0a0a;
+  --page-glow: rgba(59, 130, 246, 0.06);
   
   /* Semantic colors - Clear and accessible */
   --success:   #10b981;
@@ -177,6 +181,10 @@
   --accent:    #2563eb;
   --accent-hover: #1d4ed8;
   --accent-light: #3b82f6;
+
+  /* Page backdrop (static, restrained) */
+  --page-bg:   #fafafa;
+  --page-glow: rgba(37, 99, 235, 0.05);
   
   /* Semantic colors - Clear for light mode */
   --success:   #059669;
@@ -217,7 +225,7 @@ html {
 }
 
 body {
-  background: transparent;
+  background: var(--page-bg);
   color: var(--text);
   font-family: var(--font-sans);
   font-size: var(--text-base);
@@ -537,6 +545,18 @@ section {
 }
 
 /* Removed shimmer effect - too distracting */
+
+/* Respect reduced-motion: disable decorative motion/reveal animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════
    RESPONSIVE TYPOGRAPHY

@@ -251,6 +251,7 @@ export const researchProjects = [
     title: "Multi-hit Model of Cancer Simulation",
     tags: ["Python", "NumPy", "Numba", "pandas", "matplotlib", "seaborn", "joblib", "Jupyter"],
     context: "Bioinformatics Projects Lab · Seattle University · 2025",
+    impact: "Numba-accelerated stochastic simulation with seeded, reproducible parameter sweeps",
     bullets: [
       "Built a stochastic, multi-step cancer progression simulation in Python using NumPy for core computations and Numba to accelerate performance-critical simulation loops.",
       "Ran parameter sweeps with joblib, aggregated and analysed outputs in pandas, and produced interpretable summaries and figures with matplotlib and seaborn.",
@@ -263,6 +264,7 @@ export const researchProjects = [
     title: "Crosslink of Data in ICcl Neurons of Barn Owls",
     tags: ["Python", "pandas", "SciPy", "NumPy", "joblib", "PyArrow", "HDF5", "matplotlib", "seaborn", "GitHub"],
     context: "Computational Neuroscience Research · Seattle University · 2026",
+    impact: "ITD×ILD analysis pipeline with Parquet/HDF5 outputs batched across neurons",
     bullets: [
       "Built a cross-linked analysis pipeline for ICcl neurone ITD×ILD responses by importing CSV data with pandas and converting MATLAB (.mat) files using SciPy and NumPy into standardised, analysis-ready matrices.",
       "Automated batch computations and dataset assembly across neurons using joblib, storing cross-referenced metadata and outputs in Parquet (PyArrow) and HDF5 for fast, structured access.",
@@ -275,6 +277,7 @@ export const researchProjects = [
     title: "Urban Wildlife Camera Traps & Community Reports Analysis",
     tags: ["R", "dplyr", "tidyr", "sf", "terra", "ggplot2", "tmap", "renv", "Quarto", "Git"],
     context: "Ecology Research & Poster · Seattle University · 2024",
+    impact: "Fused camera-trap and community datasets in R with reproducible spatial mapping",
     bullets: [
       "Integrated camera trap and Carnivore Spotter datasets in R using dplyr and tidyr for joins, cleaning, and feature engineering, with reproducible dependency management via renv.",
       "Automated spatial mapping and geodata analysis across large-scale geographic datasets using sf and terra, producing analysis-ready outputs for research use.",
@@ -287,6 +290,7 @@ export const researchProjects = [
     title: "DNA Circuit Board Perforation System",
     tags: ["DNA Self-Assembly", "Strand Displacement", "Computational Biology"],
     context: "Biophysics Research · Seattle University · 2026",
+    impact: "Characterized electrical breakdown thresholds across DNA circuit geometries",
     bullets: [
       "Constructed DNA-based computational circuit boards using programmable DNA self-assembly, designed to mimic semiconductor routing layers through spatially constrained helix networks, crossovers, and strand-displacement logic motifs.",
       "Characterised electrical breakdown thresholds across different DNA geometries by varying applied field strength, ionic conditions, and scaffold packing density to determine stable operational regimes.",
@@ -302,6 +306,7 @@ export const personalProjects = [
     title: "College Transfer Application",
     tags: ["Python", "TypeScript", "FastAPI", "Next.js", "pgvector", "Gemini", "Celery", "Redis", "JWT"],
     context: "Full-Stack AI · Computer Science · 2026",
+    impact: "768-dim embeddings · 2,944 institutions · 4-step matching pipeline",
     bullets: [
       "Built a full-stack AI web app in FastAPI and Next.js to automate college transfer workflows, course equivalency matching, admission letter parsing, and multilingual document translation.",
       "Powered a 4-step matching pipeline (pgvector similarity search → CIP code matching → Gemini LLM reranking → confidence scoring) on 768-dimensional embeddings across 2,944 seeded US institutions.",
@@ -315,6 +320,7 @@ export const personalProjects = [
     title: "Neural Pathway Simulation",
     tags: ["Python", "FastAPI", "SQLAlchemy", "NetworkX", "Three.js", "Pydantic", "pytest"],
     context: "Neuropharmacological Visualisation Tool · 2026",
+    impact: "EC50/Hill pharmacodynamic models with an interactive Three.js brain",
     bullets: [
       "Built a full-stack platform that simulates how drugs interact with neural receptors in real time, designed for college students who need fast, data-driven visualisations.",
       "Developed a FastAPI + SQLAlchemy backend with a NetworkX propagation engine, implementing EC50/Hill pharmacodynamic models grounded in peer-reviewed literature.",

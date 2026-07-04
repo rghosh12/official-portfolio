@@ -1,117 +1,51 @@
-'use client'
-
-import { useState } from 'react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { Section } from '@/components/ui/Section'
 import { skills } from '@/data/skills'
-import { ChevronDown } from 'lucide-react'
+import {
+  SkillsAccordion,
+  type SkillCategory,
+  type ResolvedIcon,
+} from './SkillsAccordion'
 import * as SimpleIcons from 'simple-icons/icons'
 
-const categories = {
-  languages: { label: 'Languages', color: 'blue' },
-  frontend: { label: 'Frontend', color: 'purple' },
-  aiDevelopment: { label: 'AI Development', color: 'indigo' },
-  backend: { label: 'Backend', color: 'emerald' },
-  database: { label: 'Database', color: 'cyan' },
-  awsServices: { label: 'AWS Services', color: 'amber' },
-} as const
+// NOTE: this is a server component. The large `simple-icons` import is resolved
+// here at build time and only the tiny per-icon {title,hex,path} data is passed
+// to the client accordion — so the client bundle stays small.
 
-type Category = keyof typeof skills
+const categoryLabels: Record<keyof typeof skills, string> = {
+  languages: 'Languages',
+  frontend: 'Frontend',
+  aiDevelopment: 'AI Development',
+  backend: 'Backend',
+  database: 'Database',
+  awsServices: 'AWS Services',
+}
+
+function resolveIcon(slug: string): ResolvedIcon {
+  if (!slug) return null
+  const key = `si${slug.charAt(0).toUpperCase() + slug.slice(1)}` as keyof typeof SimpleIcons
+  const data = SimpleIcons[key] as { title: string; hex: string; path: string } | undefined
+  if (!data) return null
+  return { title: data.title, hex: data.hex, path: data.path }
+}
 
 export function Skills() {
-  const [openCategories, setOpenCategories] = useState<Set<Category>>(new Set(['languages']))
-
-  const toggleCategory = (category: Category) => {
-    const newOpen = new Set(openCategories)
-    if (newOpen.has(category)) {
-      newOpen.delete(category)
-    } else {
-      newOpen.add(category)
-    }
-    setOpenCategories(newOpen)
-  }
+  const categories: SkillCategory[] = (
+    Object.keys(categoryLabels) as (keyof typeof skills)[]
+  ).map((key) => ({
+    key,
+    label: categoryLabels[key],
+    items: skills[key].map((s) => ({ name: s.name, icon: resolveIcon(s.icon) })),
+  }))
 
   return (
-    <section id="skills" className="px-6 sm:px-12 lg:px-24 py-20 border-b border-white/10">
-      <div className="max-w-6xl">
-        <AnimatedSection>
-          <SectionHeading
-            label="Expertise"
-            title="Skills & Technologies"
-            description="Technical proficiencies across research, development, and data science."
-          />
-        </AnimatedSection>
-
-        <div className="space-y-4 mt-8">
-          {Object.entries(categories).map(([key, { label }], categoryIndex) => {
-            const category = key as Category
-            const isOpen = openCategories.has(category)
-            const categorySkills = skills[category]
-
-            return (
-              <AnimatedSection key={key} delay={categoryIndex * 50}>
-                <div className="glass-card rounded-xl overflow-hidden border border-white/10">
-                  <button
-                    onClick={() => toggleCategory(category)}
-                    className="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors"
-                  >
-                    <span className="text-lg font-medium text-indigo-300">{label}</span>
-                    <ChevronDown
-                      className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-
-                  <div
-                    className={`transition-all duration-300 ease-in-out ${
-                      isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-                    } overflow-hidden`}
-                  >
-                    <div className="p-5 pt-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                      {categorySkills.map((skill, skillIndex) => {
-                        const iconKey = `si${skill.icon.charAt(0).toUpperCase() + skill.icon.slice(1)}` as keyof typeof SimpleIcons
-                        const iconData = SimpleIcons[iconKey]
-                        
-                        return (
-                          <div
-                            key={skill.name}
-                            className="group relative bg-[#1a1f35]/50 backdrop-blur-sm border border-white/5 rounded-lg p-4 hover:border-indigo-500/30 hover:bg-white/5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/10"
-                            style={{
-                              transitionDelay: isOpen ? `${skillIndex * 30}ms` : '0ms',
-                            }}
-                          >
-                            <div className="flex flex-col items-center justify-center gap-3">
-                              <div className="w-12 h-12 transform group-hover:scale-110 transition-transform duration-300">
-                                {iconData && (
-                                  <svg
-                                    role="img"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="w-full h-full"
-                                    fill="currentColor"
-                                    style={{ color: `#${iconData.hex}` }}
-                                  >
-                                    <title>{iconData.title}</title>
-                                    <path d={iconData.path} />
-                                  </svg>
-                                )}
-                              </div>
-                              <span className="text-sm font-medium text-gray-300 text-center">
-                                {skill.name}
-                              </span>
-                            </div>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            )
-          })}
-        </div>
-      </div>
-    </section>
+    <Section id="skills" divider>
+      <SectionHeading
+        label="Expertise"
+        title="Skills & Technologies"
+        description="Technical proficiencies across research, development, and data science."
+      />
+      <SkillsAccordion categories={categories} />
+    </Section>
   )
 }

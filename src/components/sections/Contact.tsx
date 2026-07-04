@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Mail, Link2, GitBranch, Phone, Send, Check, AlertCircle } from "lucide-react";
+import { Mail, Link2, GitBranch, Send, Check, AlertCircle } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Section } from "@/components/ui/Section";
 import { profile } from "@/data/resume";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
@@ -16,9 +17,20 @@ export function Contact() {
   });
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  // Honeypot: real users never fill this hidden field; bots do.
+  const [botField, setBotField] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    // Silently succeed for bots that trip the honeypot.
+    if (botField) {
+      setStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+      return;
+    }
+
     setStatus("loading");
     setErrorMessage("");
 
@@ -50,8 +62,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="px-6 sm:px-12 lg:px-24 py-20">
-      <div className="max-w-6xl mx-auto">
+    <Section id="contact">
         <SectionHeading
           label="Get In Touch"
           title="Contact"
@@ -59,7 +70,7 @@ export function Contact() {
         />
 
         <div className="grid lg:grid-cols-2 gap-12 mt-12">
-          {/* Contact Info */}
+          {/* Contact Info — professional channels first */}
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-semibold text-[var(--text)] mb-4">
@@ -71,41 +82,29 @@ export function Contact() {
               </p>
             </div>
 
+            <ContactCard
+              icon={<Mail size={18} />}
+              label="Email"
+              value={profile.email}
+              href={`mailto:${profile.email}`}
+            />
+
             <div className="grid sm:grid-cols-2 gap-4">
-              <ContactCard
-                icon={<Mail size={18} />}
-                label="University Email"
-                value={profile.email}
-                href={`mailto:${profile.email}`}
-              />
-              <ContactCard
-                icon={<Mail size={18} />}
-                label="Personal Email"
-                value={profile.emailAlt}
-                href={`mailto:${profile.emailAlt}`}
-              />
-              <ContactCard
-                icon={<Phone size={18} />}
-                label="Phone"
-                value={profile.phone}
-                href={`tel:${profile.phone}`}
-              />
               <ContactCard
                 icon={<Link2 size={18} />}
                 label="LinkedIn"
-                value="rupak-ghosh-339847239"
+                value={profile.linkedinHandle}
                 href={profile.linkedin}
                 external
               />
+              <ContactCard
+                icon={<GitBranch size={18} />}
+                label="GitHub"
+                value="rghosh12"
+                href={profile.github}
+                external
+              />
             </div>
-
-            <ContactCard
-              icon={<GitBranch size={18} />}
-              label="GitHub"
-              value="rghosh12"
-              href={profile.github}
-              external
-            />
           </div>
 
           {/* Contact Form */}
@@ -115,6 +114,20 @@ export function Contact() {
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Honeypot — hidden from real users, catches bots */}
+              <div className="absolute -left-[9999px]" aria-hidden="true">
+                <label htmlFor="company">Company</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={botField}
+                  onChange={(e) => setBotField(e.target.value)}
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="name"
@@ -226,8 +239,7 @@ export function Contact() {
             </form>
           </div>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 }
 

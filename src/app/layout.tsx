@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ConditionalStarfield } from "@/components/ui/conditional-starfield";
+import { PageBackground } from "@/components/ui/PageBackground";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { BackToTop } from "@/components/ui/BackToTop";
 import { ThemeProvider } from "@/contexts/ThemeContext";
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body suppressHydrationWarning>
         <SkipToContent />
         <ThemeProvider>
-          <ConditionalStarfield />
+          <PageBackground />
           <ScrollProgress />
           {children}
           <BackToTop />

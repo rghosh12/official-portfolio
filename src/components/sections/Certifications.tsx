@@ -1,12 +1,12 @@
 import { BadgeCheck, Heart } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Section } from "@/components/ui/Section";
 import { certifications, volunteering } from "@/data/resume";
 
 export function Certifications() {
   return (
-    <section id="certifications" className="px-6 sm:px-12 lg:px-24 py-20 border-b border-[var(--border)]">
-      <div className="max-w-4xl">
-        <div className="grid md:grid-cols-2 gap-12">
+    <Section id="certifications" divider>
+      <div className="grid md:grid-cols-2 gap-12">
           {/* Certifications */}
           <div>
             <SectionHeading label="Credentials" title="Certifications & Licenses" />
@@ -41,12 +41,11 @@ export function Certifications() {
                     <p className="text-xs text-[var(--muted)] mt-0.5">{v.org}</p>
                     {v.dept && <p className="text-xs text-[var(--muted)]">{v.dept}</p>}
                   </div>
-                </div>
-              ))}
+            </div>
+          ))}
             </div>
           </div>
-        </div>
       </div>
-    </section>
+    </Section>
   );
 }

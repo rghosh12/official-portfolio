@@ -1,14 +1,14 @@
 import { GraduationCap, Calendar, MapPin } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Section } from "@/components/ui/Section";
 import { education } from "@/data/resume";
 
 export function Education() {
   return (
-    <section id="education" className="px-6 sm:px-12 lg:px-24 py-20 border-b border-[var(--border)]">
-      <div className="max-w-4xl">
-        <SectionHeading label="Background" title="Education" />
+    <Section id="education" divider>
+      <SectionHeading label="Background" title="Education" />
 
-        <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5">
           {education.map((edu, i) => (
             <div
               key={i}
@@ -56,8 +56,7 @@ export function Education() {
               </div>
             </div>
           ))}
-        </div>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -29,7 +29,7 @@ export function Nav() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-black/60 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/20"
+          ? "bg-[var(--surface)] backdrop-blur-md border-b border-[var(--border)] shadow-lg shadow-black/20"
           : "bg-transparent",
         shouldHide && "-translate-y-full"
       )}
@@ -39,7 +39,7 @@ export function Nav() {
         {/* Logo / Name */}
         <a
           href="#home"
-          className="text-sm font-semibold text-white hover:text-blue-400 transition-colors"
+          className="text-sm font-semibold text-[var(--text)] hover:text-[var(--accent)] transition-colors"
           aria-label="Rupak Ghosh - Home"
         >
           RG
@@ -58,8 +58,8 @@ export function Nav() {
                   className={cn(
                     "text-xs font-medium transition-all relative group",
                     isActive 
-                      ? "text-white" 
-                      : "text-gray-400 hover:text-white"
+                      ? "text-[var(--text)]" 
+                      : "text-[var(--muted)] hover:text-[var(--text)]"
                   )}
                 >
                   {link.label}
@@ -96,7 +96,7 @@ export function Nav() {
       <div
         id="mobile-menu"
         className={cn(
-          "md:hidden border-t border-white/10 bg-black/90 backdrop-blur-md transition-all duration-300",
+          "md:hidden border-t border-[var(--border)] bg-[var(--surface)] backdrop-blur-md transition-all duration-300",
           mobileOpen 
             ? "max-h-96 opacity-100" 
             : "max-h-0 opacity-0 overflow-hidden"
@@ -115,8 +115,8 @@ export function Nav() {
                 className={cn(
                   "text-sm font-medium transition-colors flex items-center gap-2",
                   isActive 
-                    ? "text-white" 
-                    : "text-gray-400 hover:text-white"
+                    ? "text-[var(--text)]" 
+                    : "text-[var(--muted)] hover:text-[var(--text)]"
                 )}
               >
                 {isActive && (
