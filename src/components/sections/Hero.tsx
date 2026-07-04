@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/resume";
 
@@ -38,19 +39,19 @@ export function Hero() {
 
           {/* CTAs — labels now match their destinations */}
           <div className="flex flex-wrap items-center gap-4 mb-8">
-            <a
-              href="#projects"
+            <Link
+              href="/projects"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white text-sm font-semibold transition-colors"
             >
               View Projects
               <ArrowRight size={16} />
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              href="/contact"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text)] text-sm font-semibold transition-colors"
             >
               Get in Touch
-            </a>
+            </Link>
             <a
               href={profile.linkedin}
               target="_blank"

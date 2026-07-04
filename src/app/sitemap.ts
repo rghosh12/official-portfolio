@@ -4,48 +4,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://rupakghosh.dev";
   const currentDate = new Date();
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}#education`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}#experience`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}#skills`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}#projects`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}#certifications`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}#contact`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.8,
-    },
+  const routes = [
+    { path: "", priority: 1.0, changeFrequency: "monthly" as const },
+    { path: "/education", priority: 0.8, changeFrequency: "yearly" as const },
+    { path: "/experience", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/skills", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/projects", priority: 0.9, changeFrequency: "weekly" as const },
+    { path: "/credentials", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/contact", priority: 0.8, changeFrequency: "yearly" as const },
   ];
+
+  return routes.map(({ path, priority, changeFrequency }) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: currentDate,
+    changeFrequency,
+    priority,
+  }));
 }

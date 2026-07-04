@@ -39,7 +39,7 @@ export function Skills() {
   }))
 
   return (
-    <Section id="skills" divider>
+    <Section id="skills">
       <SectionHeading
         label="Expertise"
         title="Skills & Technologies"

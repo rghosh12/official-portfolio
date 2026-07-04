@@ -5,7 +5,7 @@ import { certifications, volunteering } from "@/data/resume";
 
 export function Certifications() {
   return (
-    <Section id="certifications" divider>
+    <Section id="credentials">
       <div className="grid md:grid-cols-2 gap-12">
           {/* Certifications */}
           <div>

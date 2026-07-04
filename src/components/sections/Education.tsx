@@ -5,7 +5,7 @@ import { education } from "@/data/resume";
 
 export function Education() {
   return (
-    <Section id="education" divider>
+    <Section id="education">
       <SectionHeading label="Background" title="Education" />
 
       <div className="flex flex-col gap-5">

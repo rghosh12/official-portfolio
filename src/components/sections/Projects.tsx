@@ -21,7 +21,7 @@ import {
 
 export function Projects() {
   return (
-    <Section id="projects" divider>
+    <Section id="projects">
       <SectionHeading
         label="Work"
         title="Projects"
