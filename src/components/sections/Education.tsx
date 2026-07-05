@@ -2,6 +2,7 @@ import { GraduationCap, Calendar, MapPin } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
 import { education } from "@/data/resume";
+import { EducationDropdowns } from "@/components/sections/EducationDropdowns";
 
 export function Education() {
   return (
@@ -54,6 +55,11 @@ export function Education() {
                   <p className="text-xs font-semibold text-[var(--text)]">GPA: {edu.gpa}</p>
                 </div>
               </div>
+
+              <EducationDropdowns
+                courses={edu.courses}
+                extracurriculars={edu.extracurriculars}
+              />
             </div>
           ))}
       </div>

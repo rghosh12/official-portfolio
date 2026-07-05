@@ -2,16 +2,9 @@ import Link from "next/link";
 import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/resume";
 
-const affiliations = [
-  "Seattle University",
-  "UT Austin",
-  "IISc",
-];
-
-const focusAreas = [
-  "Computational neuroscience",
-  "Machine learning & simulation",
-  "Full-stack scientific tooling",
+const primaryInterests = [
+  "Computational Neuroscience",
+  "Neural Networks and Deep Learning (BioLLMs)",
 ];
 
 export function Hero() {
@@ -23,10 +16,6 @@ export function Hero() {
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[1.25fr_0.75fr] gap-12 lg:gap-16 items-center">
         {/* Left: identity */}
         <div>
-          <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[var(--accent)] mb-5">
-            {affiliations.join("  ·  ")}
-          </p>
-
           <h1 className="text-6xl sm:text-7xl font-extrabold tracking-tighter mb-6 leading-[0.95]">
             Rupak<br />Ghosh
           </h1>
@@ -63,6 +52,23 @@ export function Hero() {
             </a>
           </div>
 
+          <div className="flex flex-col gap-1.5 mb-8 text-sm">
+            <a
+              href={`mailto:${profile.emailAlt}`}
+              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+            >
+              <span className="text-[var(--text-secondary)]">Personal:</span>{" "}
+              {profile.emailAlt}
+            </a>
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+            >
+              <span className="text-[var(--text-secondary)]">Professional:</span>{" "}
+              {profile.email}
+            </a>
+          </div>
+
           {/* Inline credibility links */}
           <div className="flex items-center gap-5 text-[var(--muted)]">
             <a
@@ -94,10 +100,10 @@ export function Hero() {
         <div className="hidden lg:block">
           <div className="bg-[var(--surface-2)] border border-[var(--border)] rounded-2xl p-7">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--muted)] mb-5">
-              Currently focused on
+              Primary Interests
             </p>
             <ul className="flex flex-col gap-4">
-              {focusAreas.map((area) => (
+              {primaryInterests.map((area) => (
                 <li key={area} className="flex items-start gap-3">
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
                   <span className="text-sm text-[var(--text-secondary)] leading-relaxed">
@@ -108,12 +114,12 @@ export function Hero() {
             </ul>
             <div className="mt-7 pt-6 border-t border-[var(--border)] grid grid-cols-2 gap-4">
               <div>
-                <p className="text-2xl font-bold text-[var(--text)]">4</p>
-                <p className="text-xs text-[var(--muted)] mt-0.5">Research institutions</p>
+                <p className="text-2xl font-bold text-[var(--text)]">3</p>
+                <p className="text-xs text-[var(--muted)] mt-0.5">Research papers read</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-[var(--text)]">2</p>
-                <p className="text-xs text-[var(--muted)] mt-0.5">Countries</p>
+                <p className="text-2xl font-bold text-[var(--text)]">3</p>
+                <p className="text-xs text-[var(--muted)] mt-0.5">Countries visited</p>
               </div>
             </div>
           </div>

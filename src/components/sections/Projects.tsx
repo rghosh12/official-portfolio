@@ -22,11 +22,7 @@ import {
 export function Projects() {
   return (
     <Section id="projects">
-      <SectionHeading
-        label="Work"
-        title="Projects"
-        description="Research, personal, and hackathon builds — ordered by relevance to computational and ML work."
-      />
+      <SectionHeading label="Work" title="Projects" />
 
       {/* Research */}
       <ProjectGroup title="Research Projects">

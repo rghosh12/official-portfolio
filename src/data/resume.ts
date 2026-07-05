@@ -30,6 +30,8 @@ export const education = [
     gpa: "3.83 (Quarter)",
     graduation: "June 2027",
     current: true,
+    courses: [],
+    extracurriculars: [],
   },
   {
     institution: "Navkis Group of Institutions",
@@ -41,6 +43,8 @@ export const education = [
     gpa: "3.78 (Overall)",
     graduation: "2022",
     current: false,
+    courses: [],
+    extracurriculars: [],
   },
 ] as const;
 

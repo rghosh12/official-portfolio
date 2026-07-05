@@ -11,7 +11,6 @@ export function Experience() {
       <SectionHeading
         label="Experience"
         title="Professional & Research Experience"
-        description="Research, technical, and campus roles across four institutions in two countries."
       />
 
       <div className="flex flex-col gap-6">
