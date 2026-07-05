@@ -20,7 +20,7 @@ export function Hero() {
               width={160}
               height={160}
               priority
-              className="w-40 h-40 rounded-full object-cover object-[center_20%] border border-[var(--border)] shadow-lg shadow-black/20"
+              className="w-40 h-40 rounded-full object-cover object-center border border-[var(--border)] shadow-lg shadow-black/20"
             />
           </div>
 
