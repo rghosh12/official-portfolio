@@ -18,9 +18,10 @@ export const skills = {
     { name: "Angular", icon: "angular" },
   ],
   aiDevelopment: [
-    { name: "Cursor", icon: "cursor" },
-    { name: "Claude Code", icon: "anthropic" },
+    { name: "Cursor", icon: "", image: "/logos/cursor.png" },
+    { name: "Claude Code", icon: "", image: "/logos/claude-code.png" },
     { name: "Codex", icon: "", image: "/logos/codex.png" },
+    { name: "Google Gemini", icon: "", image: "/logos/google-gemini.png" },
     { name: "Amazon Q", icon: "amazonwebservices" },
   ],
   backend: [
@@ -37,16 +38,16 @@ export const skills = {
   ],
   awsServices: [
     { name: "API Gateway", icon: "amazonapigateway" },
-    { name: "DynamoDB", icon: "amazondynamodb" },
+    { name: "DynamoDB", icon: "", image: "/logos/aws-dynamodb.png" },
     { name: "Q for Business", icon: "" },
     { name: "S3", icon: "amazons3" },
     { name: "Kendra", icon: "" },
-    { name: "Lambda", icon: "awslambda" },
+    { name: "Lambda", icon: "", image: "/logos/aws-lambda.png" },
     { name: "Fargate", icon: "awsfargate" },
     { name: "EC2/EKS", icon: "amazonec2" },
     { name: "SQS", icon: "amazonsqs" },
     { name: "SNS", icon: "amazonsimpleemailservice" },
-    { name: "SageMaker", icon: "amazonsagemaker" },
-    { name: "Bedrock", icon: "" },
+    { name: "SageMaker", icon: "", image: "/logos/aws-sagemaker.png" },
+    { name: "Bedrock", icon: "", image: "/logos/aws-bedrock.png" },
   ],
 } as const;
