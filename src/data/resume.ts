@@ -20,6 +20,18 @@ export const profile = {
 
 // ----------------------------------------------------------------
 
+/** ISO 3166-1 alpha-2 codes — update this list to change the map and count. */
+export const countriesVisited = [
+  { code: "US", name: "United States" },
+  { code: "IN", name: "India" },
+] as const;
+
+export const heroStats = {
+  researchPapersRead: 3,
+} as const;
+
+// ----------------------------------------------------------------
+
 export const education = [
   {
     institution: "Seattle University",

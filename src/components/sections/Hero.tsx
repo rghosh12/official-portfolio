@@ -1,11 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/resume";
-
-const primaryInterests = [
-  "Computational Neuroscience",
-  "Neural Networks and Deep Learning (BioLLMs)",
-];
+import { HeroSidebar } from "@/components/sections/HeroSidebar";
 
 export function Hero() {
   return (
@@ -16,15 +13,20 @@ export function Hero() {
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[1.25fr_0.75fr] gap-12 lg:gap-16 items-center">
         {/* Left: identity */}
         <div>
+          <div className="mb-6">
+            <Image
+              src="/images/profile.png"
+              alt="Rupak Ghosh"
+              width={160}
+              height={160}
+              priority
+              className="w-40 h-40 rounded-full object-cover object-[center_20%] border border-[var(--border)] shadow-lg shadow-black/20"
+            />
+          </div>
+
           <h1 className="text-6xl sm:text-7xl font-extrabold tracking-tighter mb-6 leading-[0.95]">
             Rupak<br />Ghosh
           </h1>
-
-          <p className="text-lg sm:text-xl text-[var(--muted)] mb-8 max-w-[560px] leading-relaxed">
-            Computational neuroscience &amp; machine-learning researcher bridging
-            wet-lab biology and code — building simulations of neural systems,
-            cancer dynamics, and the tools that make research reproducible.
-          </p>
 
           {/* CTAs — labels now match their destinations */}
           <div className="flex flex-wrap items-center gap-4 mb-8">
@@ -96,34 +98,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right: focus card — fills the fold intentionally */}
-        <div className="hidden lg:block">
-          <div className="bg-[var(--surface-2)] border border-[var(--border)] rounded-2xl p-7">
-            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--muted)] mb-5">
-              Primary Interests
-            </p>
-            <ul className="flex flex-col gap-4">
-              {primaryInterests.map((area) => (
-                <li key={area} className="flex items-start gap-3">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
-                  <span className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                    {area}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-7 pt-6 border-t border-[var(--border)] grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-2xl font-bold text-[var(--text)]">3</p>
-                <p className="text-xs text-[var(--muted)] mt-0.5">Research papers read</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-[var(--text)]">3</p>
-                <p className="text-xs text-[var(--muted)] mt-0.5">Countries visited</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <HeroSidebar />
       </div>
     </section>
   );
