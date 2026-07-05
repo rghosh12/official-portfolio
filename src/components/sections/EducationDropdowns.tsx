@@ -30,7 +30,7 @@ function EducationDropdown({ section }: { section: DropdownSection }) {
 
       <div
         className={`transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[720px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="px-4 pb-4">
