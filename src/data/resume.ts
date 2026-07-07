@@ -27,7 +27,7 @@ export const countriesVisited = [
 ] as const;
 
 export const heroStats = {
-  researchPapersRead: 3,
+  literatureReadingCount: 3,
 } as const;
 
 // ----------------------------------------------------------------
