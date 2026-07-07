@@ -19,14 +19,14 @@
   --muted:     #a1a1a1;
   --muted-dark: #737373;
   
-  /* Brand colors - Professional Blue with excellent contrast */
-  --accent:    #3b82f6;
-  --accent-hover: #2563eb;
-  --accent-light: #60a5fa;
+  /* Brand colors - Muted olive green */
+  --accent:    #8b9d83;
+  --accent-hover: #738068;
+  --accent-light: #a3b39b;
 
   /* Page backdrop (static, restrained) */
   --page-bg:   #0a0a0a;
-  --page-glow: rgba(59, 130, 246, 0.06);
+  --page-glow: rgba(139, 157, 131, 0.06);
   
   /* Semantic colors - Clear and accessible */
   --success:   #10b981;
@@ -39,8 +39,8 @@
   --info-light: #22d3ee;
   
   /* Gradient colors - Modern and refined */
-  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  --gradient-accent: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  --gradient-primary: linear-gradient(135deg, #8b9d83 0%, #738068 100%);
+  --gradient-accent: linear-gradient(135deg, #a3b39b 0%, #8b9d83 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --gradient-cosmic: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   
@@ -177,14 +177,14 @@
   --muted:     #52525b;
   --muted-dark: #71717a;
   
-  /* Brand colors - Professional Blue for light mode */
-  --accent:    #2563eb;
-  --accent-hover: #1d4ed8;
-  --accent-light: #3b82f6;
+  /* Brand colors - Muted olive green for light mode */
+  --accent:    #738068;
+  --accent-hover: #5f6d57;
+  --accent-light: #8b9d83;
 
   /* Page backdrop (static, restrained) */
   --page-bg:   #fafafa;
-  --page-glow: rgba(37, 99, 235, 0.05);
+  --page-glow: rgba(115, 128, 104, 0.05);
   
   /* Semantic colors - Clear for light mode */
   --success:   #059669;
@@ -203,8 +203,8 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.2);
-  --shadow-glow-lg: 0 0 40px rgba(59, 130, 246, 0.3);
+  --shadow-glow: 0 0 20px rgba(139, 157, 131, 0.2);
+  --shadow-glow-lg: 0 0 40px rgba(139, 157, 131, 0.3);
 }
 
 /* ═══════════════════════════════════════════════════════════

@@ -19,10 +19,10 @@ const MAP_OPTIONS = {
   oceanColor: "#0a0a0a",
   worldColor: "#262626",
   labelFill: { out: "#737373", over: "#e5e5e5", click: "#fafafa" },
-  countryStroke: { out: "#404040", over: "#525252", click: "#3b82f6" },
+  countryStroke: { out: "#404040", over: "#525252", click: "#8b9d83" },
   countryStrokeWidth: { out: "0.5", over: "0.8", click: "1" },
   provinceFill: { out: "#262626", over: "#404040", click: "#525252" },
-  provinceStroke: { out: "#404040", over: "#525252", click: "#3b82f6" },
+  provinceStroke: { out: "#404040", over: "#525252", click: "#8b9d83" },
   provinceStrokeWidth: { out: "0.1", over: "0.5", click: "0.5" },
   groupCountries: true,
   trackCoords: false,
@@ -76,7 +76,7 @@ export function WorldMapInline() {
 
   const highlightVisitedCountries = useCallback((map: SvgWorldMapInstance) => {
     const visitedColors = Object.fromEntries(
-      countriesVisited.map(({ code }) => [code, "#3b82f6"])
+      countriesVisited.map(({ code }) => [code, "#8b9d83"])
     );
     map.reset();
     map.update(visitedColors);
