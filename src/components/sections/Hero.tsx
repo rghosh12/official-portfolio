@@ -54,20 +54,32 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="flex flex-col gap-1.5 mb-8 text-sm">
+          <div className="flex items-center gap-4 mb-8">
             <a
               href={`mailto:${profile.emailAlt}`}
-              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+              className="group inline-flex flex-col items-center gap-1.5 text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+              aria-label={`Personal Email: ${profile.emailAlt}`}
+              title={`Personal Email: ${profile.emailAlt}`}
             >
-              <span className="text-[var(--text-secondary)]">Personal:</span>{" "}
-              {profile.emailAlt}
+              <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--border)] group-hover:border-[var(--accent)] transition-colors">
+                <Mail size={18} />
+              </span>
+              <span className="text-[11px] font-medium text-[var(--text-secondary)] group-hover:text-[var(--accent)]">
+                Personal Email
+              </span>
             </a>
             <a
               href={`mailto:${profile.email}`}
-              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+              className="group inline-flex flex-col items-center gap-1.5 text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+              aria-label={`Professional Email: ${profile.email}`}
+              title={`Professional Email: ${profile.email}`}
             >
-              <span className="text-[var(--text-secondary)]">Professional:</span>{" "}
-              {profile.email}
+              <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--border)] group-hover:border-[var(--accent)] transition-colors">
+                <Mail size={18} />
+              </span>
+              <span className="text-[11px] font-medium text-[var(--text-secondary)] group-hover:text-[var(--accent)]">
+                Professional Email
+              </span>
             </a>
           </div>
 
