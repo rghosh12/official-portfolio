@@ -8,11 +8,11 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-[85vh] flex items-center px-6 sm:px-12 lg:px-24 py-24"
+      className="min-h-[85vh] px-6 sm:px-12 lg:px-24 py-24"
     >
-      <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[1.25fr_0.75fr] gap-12 lg:gap-16 items-center">
-        {/* Left: identity */}
-        <div>
+      <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[1.25fr_0.75fr] gap-12 lg:gap-16 items-start">
+        {/* Left: identity — stays pinned while skills accordion expands */}
+        <div className="lg:sticky lg:top-24 lg:self-start">
           <div className="mb-6">
             <Image
               src="/images/profile.png"
@@ -28,7 +28,6 @@ export function Hero() {
             Rupak<br />Ghosh
           </h1>
 
-          {/* CTAs — labels now match their destinations */}
           <div className="flex flex-wrap items-center gap-4 mb-8">
             <Link
               href="/projects"
@@ -54,37 +53,7 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="flex items-center gap-4 mb-8">
-            <a
-              href={`mailto:${profile.emailAlt}`}
-              className="group inline-flex flex-col items-center gap-1.5 text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
-              aria-label={`Personal Email: ${profile.emailAlt}`}
-              title={`Personal Email: ${profile.emailAlt}`}
-            >
-              <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--border)] group-hover:border-[var(--accent)] transition-colors">
-                <Mail size={18} />
-              </span>
-              <span className="text-[11px] font-medium text-[var(--text-secondary)] group-hover:text-[var(--accent)]">
-                Personal Email
-              </span>
-            </a>
-            <a
-              href={`mailto:${profile.email}`}
-              className="group inline-flex flex-col items-center gap-1.5 text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
-              aria-label={`Professional Email: ${profile.email}`}
-              title={`Professional Email: ${profile.email}`}
-            >
-              <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--border)] group-hover:border-[var(--accent)] transition-colors">
-                <Mail size={18} />
-              </span>
-              <span className="text-[11px] font-medium text-[var(--text-secondary)] group-hover:text-[var(--accent)]">
-                Professional Email
-              </span>
-            </a>
-          </div>
-
-          {/* Inline credibility links */}
-          <div className="flex items-center gap-5 text-[var(--muted)]">
+          <div className="flex flex-wrap items-center gap-5 text-[var(--muted)]">
             <a
               href={profile.github}
               target="_blank"
@@ -102,10 +71,16 @@ export function Hero() {
               <Linkedin size={16} /> LinkedIn
             </a>
             <a
+              href={`mailto:${profile.emailAlt}`}
+              className="inline-flex items-center gap-2 text-sm hover:text-[var(--accent)] transition-colors"
+            >
+              <Mail size={16} /> Personal Email
+            </a>
+            <a
               href={`mailto:${profile.email}`}
               className="inline-flex items-center gap-2 text-sm hover:text-[var(--accent)] transition-colors"
             >
-              <Mail size={16} /> Email
+              <Mail size={16} /> Professional Email
             </a>
           </div>
         </div>
