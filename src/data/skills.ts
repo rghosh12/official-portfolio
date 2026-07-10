@@ -1,13 +1,12 @@
 export const skills = {
   languages: [
-    { name: "Java", icon: "openjdk" },
     { name: "Python", icon: "python" },
     { name: "JavaScript", icon: "javascript" },
     { name: "Swift", icon: "swift" },
     { name: "HTML", icon: "html5" },
     { name: "TypeScript", icon: "typescript" },
     { name: "R", icon: "r" },
-    { name: "Fortran", icon: "" },
+    { name: "Fortran", icon: "", image: "/logos/fortran.png" },
   ],
   frontend: [
     { name: "Next.js", icon: "nextdotjs" },
