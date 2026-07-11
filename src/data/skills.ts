@@ -9,10 +9,10 @@ export const skills = {
     { name: "Fortran", icon: "", image: "/logos/fortran.png" },
   ],
   frontend: [
-    { name: "Next.js", icon: "nextdotjs" },
+    { name: "Next.js", icon: "", image: "/logos/nextjs.png" },
     { name: "React", icon: "react" },
     { name: "React Native", icon: "react" },
-    { name: "Angular", icon: "angular" },
+    { name: "Angular", icon: "", image: "/logos/angular.png" },
   ],
   aiDevelopment: [
     { name: "Cursor", icon: "", image: "/logos/cursor.png" },
