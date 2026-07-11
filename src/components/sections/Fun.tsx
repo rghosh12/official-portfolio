@@ -1,7 +1,7 @@
 import { BookOpen, MapPin } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
-import { countriesVisited, heroStats } from "@/data/resume";
+import { countriesVisited, heroStats, visitedCountryColor } from "@/data/resume";
 import { WorldMapInline } from "@/components/sections/WorldMapInline";
 
 export function Fun() {
@@ -42,6 +42,23 @@ export function Fun() {
       </div>
 
       <div className="bg-[var(--surface-2)] border border-[var(--border)] rounded-xl p-6">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-4">
+          <span className="inline-flex items-center gap-2 text-xs text-[var(--muted)]">
+            <span
+              className="w-3 h-3 rounded-sm border border-[var(--border)]"
+              style={{ backgroundColor: visitedCountryColor }}
+              aria-hidden
+            />
+            Countries visited
+          </span>
+          <span className="inline-flex items-center gap-2 text-xs text-[var(--muted)]">
+            <span
+              className="w-3 h-3 rounded-sm border border-[var(--border)] bg-[#262626]"
+              aria-hidden
+            />
+            Not yet visited
+          </span>
+        </div>
         <div className="flex flex-wrap gap-x-4 gap-y-2 mb-4">
           {countriesVisited.map(({ code, name }) => (
             <span

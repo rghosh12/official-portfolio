@@ -21,9 +21,20 @@ export const profile = {
 // ----------------------------------------------------------------
 
 /** ISO 3166-1 alpha-2 codes — update this list to change the map and count. */
+export const visitedCountryColor = "#8b9d83";
+
 export const countriesVisited = [
-  { code: "US", name: "United States" },
+  { code: "AT", name: "Austria" },
+  { code: "CA", name: "Canada" },
+  { code: "DE", name: "Germany" },
+  { code: "HK", name: "Hong Kong" },
+  { code: "HU", name: "Hungary" },
   { code: "IN", name: "India" },
+  { code: "JP", name: "Japan" },
+  { code: "NP", name: "Nepal" },
+  { code: "RU", name: "Russia" },
+  { code: "TW", name: "Taiwan" },
+  { code: "US", name: "United States" },
 ] as const;
 
 export const heroStats = {
