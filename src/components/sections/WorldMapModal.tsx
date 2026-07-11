@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import type { SvgWorldMapInstance } from "@/types/svg-world-map";
-import { countriesVisited } from "@/data/resume";
+import { countriesVisited, visitedCountryColor } from "@/data/resume";
 
 const MAP_HOST_ID = "world-map-parking";
 const MAP_CONTAINER_ID = "svg-world-map-container";
@@ -82,7 +82,7 @@ export function WorldMapModal({ open, onClose }: WorldMapModalProps) {
 
   const highlightVisitedCountries = useCallback((map: SvgWorldMapInstance) => {
     const visitedColors = Object.fromEntries(
-      countriesVisited.map(({ code }) => [code, "#8b9d83"])
+      countriesVisited.map(({ code }) => [code, visitedCountryColor])
     );
     map.reset();
     map.update(visitedColors);
