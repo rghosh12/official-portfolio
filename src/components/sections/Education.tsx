@@ -1,6 +1,7 @@
-import { BadgeCheck, Calendar, GraduationCap, Heart, MapPin } from "lucide-react";
+import { BadgeCheck, Calendar, Heart, MapPin } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
+import { OrgLogo } from "@/components/ui/OrgLogo";
 import { certifications, education, volunteering } from "@/data/resume";
 import { EducationDropdowns } from "@/components/sections/EducationDropdowns";
 
@@ -17,9 +18,7 @@ export function Education() {
           >
             <div className="flex items-start justify-between gap-4 flex-wrap">
               <div className="flex items-start gap-4">
-                <div className="mt-0.5 w-9 h-9 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center shrink-0">
-                  <GraduationCap size={17} className="text-[var(--accent)]" />
-                </div>
+                <OrgLogo org={edu.institution} size={36} className="mt-0.5" />
                 <div>
                   <h3 className="font-semibold text-[var(--text)] text-base">{edu.institution}</h3>
                   <p className="text-[var(--text)] text-sm mt-0.5 font-medium">{edu.degree}</p>

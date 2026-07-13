@@ -1,7 +1,8 @@
-/** Maps experience org strings to logo assets under /public/logos */
+/** Maps experience/education org strings to logo assets under /public/logos */
 export type OrgLogoKey =
   | "ut-austin"
   | "seattle-university"
+  | "navkis"
   | "iisc"
   | "equilibrium-earth";
 
@@ -30,6 +31,13 @@ export const orgLogoMeta: Record<OrgLogoKey, OrgLogoMeta> = {
     fit: "cover",
     padding: "p-0",
   },
+  navkis: {
+    src: "/logos/navkis.png",
+    alt: "Navkis Educational Centre",
+    monogram: "NK",
+    fit: "contain",
+    padding: "p-1",
+  },
   iisc: {
     src: "/logos/iisc.png",
     alt: "Indian Institute of Science",
@@ -57,6 +65,9 @@ export function resolveOrgLogoKey(org: string): OrgLogoKey | null {
   }
   if (normalized.includes("seattle university")) {
     return "seattle-university";
+  }
+  if (normalized.includes("navkis")) {
+    return "navkis";
   }
   if (
     normalized.includes("indian institute of science") ||
