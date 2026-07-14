@@ -25,10 +25,25 @@ export function Experience() {
 }
 
 function ExperienceCard({ exp }: { exp: ExperienceItem }) {
+  const website = "website" in exp ? exp.website : undefined;
+  const logo = <OrgLogo org={exp.org} size={48} className="mt-0.5" />;
+
   return (
     <article className="bg-[var(--surface-2)] border border-[var(--border)] rounded-xl p-6 hover:border-[var(--accent)] transition-colors">
       <div className="flex items-start gap-4">
-        <OrgLogo org={exp.org} size={48} className="mt-0.5" />
+        {website ? (
+          <a
+            href={website}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit ${exp.org} — ${exp.role}`}
+            className="rounded-[4px] transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+          >
+            {logo}
+          </a>
+        ) : (
+          logo
+        )}
 
         <div className="flex-1 min-w-0">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
