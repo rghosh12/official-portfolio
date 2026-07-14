@@ -46,6 +46,7 @@ export const heroStats = {
 export const education = [
   {
     institution: "Seattle University",
+    website: "https://www.seattleu.edu/academics/all-programs/cell--molecular-biology-bs/",
     location: "Seattle, Washington, United States",
     degree: "Bachelor of Science in Cell and Molecular Biology",
     minors: ["Data Science & Applied Mathematics"],
@@ -82,6 +83,7 @@ export const education = [
   },
   {
     institution: "Navkis Group of Institutions",
+    website: "https://www.navkisedu.com/",
     location: "Bangalore, Karnataka, India",
     degree: "High School Diploma — CBSE",
     minors: [],

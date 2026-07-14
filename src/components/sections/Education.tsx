@@ -11,14 +11,30 @@ export function Education() {
       <SectionHeading label="Background" title="Education" />
 
       <div className="flex flex-col gap-5">
-        {education.map((edu, i) => (
+        {education.map((edu, i) => {
+          const website = "website" in edu ? edu.website : undefined;
+          const logo = <OrgLogo org={edu.institution} size={36} className="mt-0.5" />;
+
+          return (
           <div
             key={i}
             className="group relative bg-[var(--surface-2)] border border-[var(--border)] rounded-xl p-6 hover:border-[var(--accent)] transition-colors"
           >
             <div className="flex items-start justify-between gap-4 flex-wrap">
               <div className="flex items-start gap-4">
-                <OrgLogo org={edu.institution} size={36} className="mt-0.5" />
+                {website ? (
+                  <a
+                    href={website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${edu.institution}`}
+                    className="rounded-[4px] transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                  >
+                    {logo}
+                  </a>
+                ) : (
+                  logo
+                )}
                 <div>
                   <h3 className="font-semibold text-[var(--text)] text-base">{edu.institution}</h3>
                   <p className="text-[var(--text)] text-sm mt-0.5 font-medium">{edu.degree}</p>
@@ -60,7 +76,8 @@ export function Education() {
               extracurriculars={edu.extracurriculars}
             />
           </div>
-        ))}
+          );
+        })}
 
         <div className="group relative bg-[var(--surface-2)] border border-[var(--border)] rounded-xl p-6 hover:border-[var(--accent)] transition-colors">
           <div className="flex items-start gap-4">
