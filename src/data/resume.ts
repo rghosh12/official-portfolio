@@ -110,6 +110,7 @@ export const experience = [
   {
     id: "ut-austin-biochem",
     org: "The University of Texas at Austin",
+    website: "https://www.kumarresearchgroup.com/",
     role: "Research Intern — Biochemistry",
     period: "June 2026 – Present",
     duration: "1 month",
@@ -123,6 +124,7 @@ export const experience = [
   {
     id: "su-it",
     org: "Seattle University",
+    website: "https://www.seattleu.edu/office-directory/information-technology-services/",
     role: "IT Service Desk Student Technician",
     period: "May 2026 – Present",
     duration: "2 months",
@@ -141,6 +143,7 @@ export const experience = [
   {
     id: "su-peer-advocate",
     org: "Seattle University",
+    website: "https://www.seattleu.edu/resource-network/",
     role: "Peer Advocate — Library Research",
     period: "May 2024 – Present",
     duration: "2 years 2 months",
@@ -159,6 +162,7 @@ export const experience = [
   {
     id: "su-front-desk",
     org: "Seattle University",
+    website: "https://library.seattleu.edu/",
     role: "Front Desk Assistant — Circulation Desk",
     period: "September 2025 – June 2026",
     duration: "10 months",
@@ -177,6 +181,7 @@ export const experience = [
   {
     id: "su-orientation",
     org: "Seattle University",
+    website: "https://www.seattleu.edu/admitted-students/orientation/leadership-opportunities/",
     role: "Orientation Leader",
     period: "March 2026 – May 2026",
     duration: "3 months",
@@ -195,6 +200,7 @@ export const experience = [
   {
     id: "equilibrium-earth",
     org: "Equilibrium Earth",
+    website: "https://www.equilibriumearth.com/",
     role: "Research and Development Intern",
     period: "July 2025 – September 2025",
     duration: "3 months",
@@ -214,6 +220,7 @@ export const experience = [
   {
     id: "iisc-biomaterials",
     org: "Indian Institute of Science — IISc",
+    website: "https://www.iisc.ac.in/locations/interdisciplinary-center-for-energy-research/",
     role: "Research Intern — Biomaterials Engineering",
     period: "June 2025 – July 2025",
     duration: "2 months",
@@ -232,6 +239,7 @@ export const experience = [
   {
     id: "su-data-science",
     org: "Seattle University College of Science and Engineering",
+    website: "https://www.seattleu.edu/science-engineering/academic-departments/department-of-biology/",
     role: "Research Intern — Data Science",
     period: "October 2024 – June 2025",
     duration: "9 months",
@@ -250,6 +258,7 @@ export const experience = [
   {
     id: "iisc-microbiology",
     org: "Indian Institute of Science — IISc",
+    website: "https://mcb.iisc.ac.in/dclab/",
     role: "Summer Research Intern — Microbiology",
     period: "June 2024 – July 2024",
     duration: "2 months",
@@ -268,6 +277,7 @@ export const experience = [
   {
     id: "ut-austin-lab",
     org: "Cockrell School of Engineering, The University of Texas at Austin",
+    website: "https://www.kumarresearchgroup.com/",
     role: "Laboratory Assistant",
     period: "July 2023 – September 2023",
     duration: "3 months",
@@ -286,6 +296,7 @@ export const experience = [
   {
     id: "iisc-biophysics",
     org: "Indian Institute of Science — IISc",
+    website: "http://mbu.iisc.ac.in/~siddlab/index.html",
     role: "Research Trainee — Molecular Biophysics",
     period: "March 2022 – August 2022",
     duration: "6 months",
