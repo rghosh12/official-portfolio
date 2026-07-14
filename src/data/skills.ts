@@ -1,6 +1,6 @@
 export const skills = {
   languages: [
-    { name: "Java", icon: "openjdk" },
+    { name: "Java", icon: "", image: "/logos/java.png" },
     { name: "Python", icon: "python" },
     { name: "JavaScript", icon: "javascript" },
     { name: "Swift", icon: "swift" },
