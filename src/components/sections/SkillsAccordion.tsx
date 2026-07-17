@@ -9,7 +9,7 @@ export type ResolvedIcon = { title: string; hex: string; path: string } | null
 export type SkillCategory = {
   key: string
   label: string
-  items: { name: string; icon: ResolvedIcon; image?: string }[]
+  items: { name: string; icon: ResolvedIcon; image?: string; website?: string }[]
 }
 
 function monogram(name: string) {
@@ -76,13 +76,8 @@ export function SkillsAccordion({
                   compact ? 'p-3 pt-0 grid grid-cols-2 gap-2' : 'p-5 pt-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4'
                 }`}
               >
-                {category.items.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className={`group relative bg-[var(--surface)] border border-[var(--border)] rounded-lg hover:border-[var(--accent)] transition-colors duration-300 ${
-                      compact ? 'p-2' : 'p-4'
-                    }`}
-                  >
+                {category.items.map((skill) => {
+                  const tile = (
                     <div className="flex flex-col items-center justify-center gap-2">
                       <div
                         className={`flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 ${
@@ -119,15 +114,36 @@ export function SkillsAccordion({
                         )}
                       </div>
                       <span
-                        className={`font-medium text-[var(--text-secondary)] text-center ${
+                        className={`font-medium text-[var(--text-secondary)] text-center group-hover:text-[var(--accent)] transition-colors ${
                           compact ? 'text-[11px] leading-tight' : 'text-sm'
                         }`}
                       >
                         {skill.name}
                       </span>
                     </div>
-                  </div>
-                ))}
+                  )
+
+                  const className = `group relative bg-[var(--surface)] border border-[var(--border)] rounded-lg hover:border-[var(--accent)] transition-colors duration-300 ${
+                    compact ? 'p-2' : 'p-4'
+                  }`
+
+                  return skill.website ? (
+                    <a
+                      key={skill.name}
+                      href={skill.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${skill.name} official site`}
+                      className={className}
+                    >
+                      {tile}
+                    </a>
+                  ) : (
+                    <div key={skill.name} className={className}>
+                      {tile}
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>

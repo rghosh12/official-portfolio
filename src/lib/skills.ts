@@ -27,6 +27,7 @@ export function buildSkillCategories(): SkillCategory[] {
       name: s.name,
       icon: resolveSkillIcon(s.icon),
       ...("image" in s && s.image ? { image: s.image } : {}),
+      ...("website" in s && s.website ? { website: s.website } : {}),
     })),
   }));
 }
