@@ -320,7 +320,6 @@ export const researchProjects = [
   {
     id: "cancer-sim",
     title: "Multi-hit Model of Cancer Simulation",
-    tags: ["Python", "NumPy", "Numba", "pandas", "matplotlib", "seaborn", "joblib", "Jupyter"],
     context: "Bioinformatics Projects Lab · Seattle University · 2025",
     impact: "Numba-accelerated stochastic simulation with seeded, reproducible parameter sweeps",
     bullets: [
@@ -333,7 +332,6 @@ export const researchProjects = [
   {
     id: "barn-owl-neurons",
     title: "Crosslink of Data in ICcl Neurons of Barn Owls",
-    tags: ["Python", "pandas", "SciPy", "NumPy", "joblib", "PyArrow", "HDF5", "matplotlib", "seaborn", "GitHub"],
     context: "Computational Neuroscience Research · Seattle University · 2026",
     impact: "ITD×ILD analysis pipeline with Parquet/HDF5 outputs batched across neurons",
     bullets: [
@@ -346,7 +344,6 @@ export const researchProjects = [
   {
     id: "urban-wildlife",
     title: "Urban Wildlife Camera Traps & Community Reports Analysis",
-    tags: ["R", "dplyr", "tidyr", "sf", "terra", "ggplot2", "tmap", "renv", "Quarto", "Git"],
     context: "Ecology Research & Poster · Seattle University · 2024",
     impact: "Fused camera-trap and community datasets in R with reproducible spatial mapping",
     bullets: [
@@ -359,7 +356,6 @@ export const researchProjects = [
   {
     id: "dna-circuit",
     title: "DNA Circuit Board Perforation System",
-    tags: ["DNA Self-Assembly", "Strand Displacement", "Computational Biology"],
     context: "Biophysics Research · Seattle University · 2026",
     impact: "Characterized electrical breakdown thresholds across DNA circuit geometries",
     bullets: [
@@ -375,7 +371,6 @@ export const personalProjects = [
   {
     id: "college-transfer",
     title: "College Transfer Application",
-    tags: ["Python", "TypeScript", "FastAPI", "Next.js", "pgvector", "Gemini", "Celery", "Redis", "JWT"],
     context: "Full-Stack AI · Computer Science · 2026",
     impact: "768-dim embeddings · 2,944 institutions · 4-step matching pipeline",
     bullets: [
@@ -389,7 +384,6 @@ export const personalProjects = [
   {
     id: "neural-pathway",
     title: "Neural Pathway Simulation",
-    tags: ["Python", "FastAPI", "SQLAlchemy", "NetworkX", "Three.js", "Pydantic", "pytest"],
     context: "Neuropharmacological Visualisation Tool · 2026",
     impact: "EC50/Hill pharmacodynamic models with an interactive Three.js brain",
     bullets: [
@@ -426,7 +420,6 @@ export const hackathonProjects = [
     tagline: "The letter on grandma's counter should not be a crisis.",
     link: "https://github.com/alexpicon/carta-clara-aws",
     linkLabel: "GitHub",
-    tags: ["iOS", "Swift", "AWS", "NLP", "Legal Tech"],
   },
   {
     id: "seaside",
@@ -438,7 +431,12 @@ export const hackathonProjects = [
     tagline: null,
     link: "https://seaside-opal.vercel.app/",
     linkLabel: "Live Demo",
-    tags: ["AI Agents", "LLM", "Simulation", "Next.js"],
+    tools: [
+      { name: "Next.js", image: "/logos/nextjs.png", website: "https://nextjs.org/" },
+      { name: "Apify", image: "/logos/apify.png", website: "https://apify.com/" },
+      { name: "Box", image: "/logos/box.png", website: "https://account.box.com/login" },
+      { name: "Amazon Kiro", image: "/logos/amazon-kiro.png", website: "https://kiro.dev/enterprise/" },
+    ],
   },
 ] as const;
 
@@ -486,6 +484,7 @@ export const volunteering = [
 // Derived helpers used by the UI
 
 export type Experience = (typeof experience)[number];
+export type ProjectTool = { name: string; image: string; website: string };
 export type ResearchProject = (typeof researchProjects)[number];
 export type PersonalProject = (typeof personalProjects)[number];
 export type HackathonProject = (typeof hackathonProjects)[number];

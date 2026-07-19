@@ -10,13 +10,13 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
-import { Tag } from "@/components/ui/Tag";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import {
   researchProjects,
   personalProjects,
   miniProjects,
   hackathonProjects,
+  type ProjectTool,
 } from "@/data/resume";
 
 export function Projects() {
@@ -34,7 +34,6 @@ export function Projects() {
                 context={p.context}
                 impact={p.impact}
                 bullet={p.bullets[0]}
-                tags={p.tags}
                 links={p.link ? [{ href: p.link, label: "View Project", kind: "link" }] : []}
               />
             </ProjectCard>
@@ -52,7 +51,6 @@ export function Projects() {
                 context={p.context}
                 impact={p.impact}
                 bullet={p.bullets[0]}
-                tags={p.tags}
                 links={
                   p.link
                     ? [{ href: p.link, label: p.linkLabel ?? "View Project", kind: "link" }]
@@ -74,7 +72,7 @@ export function Projects() {
                 context={p.event}
                 description={p.description}
                 tagline={p.tagline}
-                tags={p.tags}
+                tools={"tools" in p ? p.tools : undefined}
                 links={
                   p.link
                     ? [
@@ -143,12 +141,11 @@ function ProjectCard({
 }) {
   return (
     <div className="group h-full flex flex-col bg-[var(--surface-2)] border border-[var(--border)] rounded-xl overflow-hidden hover:border-[var(--accent)] transition-colors">
-      {/* Visual header — abstract accent banner */}
       <div
         className="relative h-20 flex items-center justify-between px-5"
         style={{
           background:
-            "linear-gradient(135deg, rgba(59,130,246,0.18) 0%, rgba(37,99,235,0.06) 100%)",
+            "linear-gradient(135deg, rgba(139,157,131,0.18) 0%, rgba(115,128,104,0.06) 100%)",
         }}
       >
         <span className="w-10 h-10 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center">
@@ -173,6 +170,40 @@ function ProjectCard({
 
 type ProjectLink = { href: string; label: string; kind: "link" | "github" };
 
+function ProjectTools({ tools }: { tools: readonly ProjectTool[] }) {
+  return (
+    <div className="mt-4">
+      <p className="text-xs font-semibold tracking-wider uppercase text-[var(--muted)] mb-3">
+        Tools
+      </p>
+      <div className="grid grid-cols-2 gap-2">
+        {tools.map((tool) => (
+          <a
+            key={tool.name}
+            href={tool.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit ${tool.name}`}
+            className="group/tool flex flex-col items-center gap-2 p-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-colors"
+          >
+            <div className="w-9 h-9 flex items-center justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={tool.image}
+                alt=""
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="text-xs font-medium text-[var(--text-secondary)] text-center group-hover/tool:text-[var(--accent)] transition-colors">
+              {tool.name}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ProjectBody({
   title,
   context,
@@ -180,7 +211,7 @@ function ProjectBody({
   bullet,
   description,
   tagline,
-  tags,
+  tools,
   links = [],
 }: {
   title: string;
@@ -189,7 +220,7 @@ function ProjectBody({
   bullet?: string;
   description?: string;
   tagline?: string | null;
-  tags?: readonly string[];
+  tools?: readonly ProjectTool[];
   links?: ProjectLink[];
 }) {
   return (
@@ -217,13 +248,7 @@ function ProjectBody({
         </p>
       )}
 
-      {tags && tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-4">
-          {tags.slice(0, 4).map((t) => (
-            <Tag key={t}>{t}</Tag>
-          ))}
-        </div>
-      )}
+      {tools && tools.length > 0 && <ProjectTools tools={tools} />}
 
       {links.length > 0 && (
         <div className="mt-auto pt-4 flex flex-wrap gap-4">
