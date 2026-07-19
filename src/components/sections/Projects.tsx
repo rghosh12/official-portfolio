@@ -18,6 +18,7 @@ import {
   hackathonProjects,
   type ProjectTool,
 } from "@/data/resume";
+import { resolveSkillIcon } from "@/lib/skills";
 
 export function Projects() {
   return (
@@ -170,6 +171,38 @@ function ProjectCard({
 
 type ProjectLink = { href: string; label: string; kind: "link" | "github" };
 
+function ProjectToolIcon({ tool }: { tool: ProjectTool }) {
+  if (tool.image) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img src={tool.image} alt="" className="w-full h-full object-contain" />
+    );
+  }
+
+  const icon = tool.icon ? resolveSkillIcon(tool.icon) : null;
+  if (icon) {
+    return (
+      <svg
+        role="img"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-full h-full"
+        fill="currentColor"
+        style={{ color: `#${icon.hex}` }}
+      >
+        <title>{icon.title}</title>
+        <path d={icon.path} />
+      </svg>
+    );
+  }
+
+  return (
+    <span className="text-xs font-bold text-[var(--accent)]">
+      {tool.name.slice(0, 2).toUpperCase()}
+    </span>
+  );
+}
+
 function ProjectTools({ tools }: { tools: readonly ProjectTool[] }) {
   return (
     <div className="mt-4">
@@ -187,12 +220,7 @@ function ProjectTools({ tools }: { tools: readonly ProjectTool[] }) {
             className="group/tool flex flex-col items-center gap-2 p-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-colors"
           >
             <div className="w-9 h-9 flex items-center justify-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={tool.image}
-                alt=""
-                className="w-full h-full object-contain"
-              />
+              <ProjectToolIcon tool={tool} />
             </div>
             <span className="text-xs font-medium text-[var(--text-secondary)] text-center group-hover/tool:text-[var(--accent)] transition-colors">
               {tool.name}

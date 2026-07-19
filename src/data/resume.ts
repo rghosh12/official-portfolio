@@ -420,6 +420,12 @@ export const hackathonProjects = [
     tagline: "The letter on grandma's counter should not be a crisis.",
     link: "https://github.com/alexpicon/carta-clara-aws",
     linkLabel: "GitHub",
+    tools: [
+      { name: "Swift", icon: "swift", website: "https://www.swift.org/" },
+      { name: "AWS S3", icon: "amazons3", website: "https://aws.amazon.com/s3/" },
+      { name: "AWS Lambda", image: "/logos/aws-lambda.png", website: "https://aws.amazon.com/lambda/" },
+      { name: "AWS DynamoDB", image: "/logos/aws-dynamodb.png", website: "https://aws.amazon.com/dynamodb/" },
+    ],
   },
   {
     id: "seaside",
@@ -433,9 +439,9 @@ export const hackathonProjects = [
     linkLabel: "Live Demo",
     tools: [
       { name: "Next.js", image: "/logos/nextjs.png", website: "https://nextjs.org/" },
-      { name: "Apify", image: "/logos/apify.png", website: "https://apify.com/" },
-      { name: "Box", image: "/logos/box.png", website: "https://account.box.com/login" },
       { name: "Amazon Kiro", image: "/logos/amazon-kiro.png", website: "https://kiro.dev/enterprise/" },
+      { name: "Box", image: "/logos/box.png", website: "https://account.box.com/login" },
+      { name: "Apify", image: "/logos/apify.png", website: "https://apify.com/" },
     ],
   },
 ] as const;
@@ -484,7 +490,12 @@ export const volunteering = [
 // Derived helpers used by the UI
 
 export type Experience = (typeof experience)[number];
-export type ProjectTool = { name: string; image: string; website: string };
+export type ProjectTool = {
+  name: string;
+  website: string;
+  image?: string;
+  icon?: string;
+};
 export type ResearchProject = (typeof researchProjects)[number];
 export type PersonalProject = (typeof personalProjects)[number];
 export type HackathonProject = (typeof hackathonProjects)[number];
