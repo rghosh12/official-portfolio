@@ -417,7 +417,7 @@ export const hackathonProjects = [
     event: "Seattle University × University of Washington AWS Hacks 2026",
     description:
       "A native iPhone app that turns frightening English mail — immigration notices, court letters, suspected scams — into a plain summary in Spanish or English, a deadline, a scam check, and a path to a free lawyer. The user picks the output language right after the splash screen, before the camera opens, so every subsequent screen renders in that language. It never gives legal advice; it refuses, visibly, whenever a question crosses that line.",
-    tagline: "The letter on grandma's counter should not be a crisis.",
+    tagline: null,
     link: "https://github.com/alexpicon/carta-clara-aws",
     linkLabel: "GitHub",
     tools: [
@@ -439,9 +439,9 @@ export const hackathonProjects = [
     linkLabel: "Live Demo",
     tools: [
       { name: "Next.js", image: "/logos/nextjs.png", website: "https://nextjs.org/" },
-      { name: "Amazon Kiro", image: "/logos/amazon-kiro.png", website: "https://kiro.dev/enterprise/" },
+      { name: "Amazon Kiro", image: "/logos/apify.png", website: "https://kiro.dev/enterprise/" },
       { name: "Box", image: "/logos/box.png", website: "https://account.box.com/login" },
-      { name: "Apify", image: "/logos/apify.png", website: "https://apify.com/" },
+      { name: "Apify", image: "/logos/amazon-kiro.png", website: "https://apify.com/" },
     ],
   },
 ] as const;
