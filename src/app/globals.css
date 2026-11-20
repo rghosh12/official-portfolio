@@ -576,6 +576,11 @@ p a:hover, li a:hover {
   100% { transform: scale(1);    color: var(--text); }
 }
 
+/* Animated dot world map behind the site: kept at background strength
+   so text and cards stay readable on top of it. */
+.dot-world-bg { opacity: 0.36; }
+[data-theme="light"] .dot-world-bg { opacity: 0.38; }
+
 /* Hide scrollbars on scroll containers that show their own affordances */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }

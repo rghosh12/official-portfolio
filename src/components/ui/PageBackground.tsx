@@ -1,18 +1,21 @@
+import { DotWorldBackground } from "@/components/ui/DotWorldBackground";
+
 /**
- * Static, restrained page backdrop.
- * Replaces the animated WebGL starfield with a single, barely-perceptible
- * radial glow driven by theme tokens. No animation, so it is inherently
- * safe for `prefers-reduced-motion` users.
+ * Page backdrop: the animated dot world map (hidden on /fun, which has its
+ * own map) with the theme's soft radial glow layered over it.
  */
 export function PageBackground() {
   return (
-    <div
-      aria-hidden="true"
-      className="fixed inset-0 -z-10"
-      style={{
-        background:
-          "radial-gradient(1100px 620px at 50% -12%, var(--page-glow), transparent 70%)",
-      }}
-    />
+    <>
+      <DotWorldBackground />
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 -z-10 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(1100px 620px at 50% -12%, var(--page-glow), transparent 70%)",
+        }}
+      />
+    </>
   );
 }
