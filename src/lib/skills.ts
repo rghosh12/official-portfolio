@@ -1,6 +1,13 @@
 import { skills } from "@/data/skills";
-import type { SkillCategory, ResolvedIcon } from "@/components/sections/SkillsAccordion";
 import * as SimpleIcons from "simple-icons/icons";
+
+export type ResolvedIcon = { title: string; hex: string; path: string } | null;
+
+export type SkillCategory = {
+  key: string;
+  label: string;
+  items: { name: string; icon: ResolvedIcon; image?: string; website?: string }[];
+};
 
 export const categoryLabels: Record<keyof typeof skills, string> = {
   languages: "Languages",

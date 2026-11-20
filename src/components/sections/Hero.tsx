@@ -10,9 +10,9 @@ export function Hero() {
       id="home"
       className="min-h-[85vh] px-6 sm:px-12 lg:px-24 py-24"
     >
-      <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[1.25fr_0.75fr] gap-12 lg:gap-16 items-start">
-        {/* Left: identity — stays pinned while skills accordion expands */}
-        <div className="lg:sticky lg:top-24 lg:self-start">
+      <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-12 items-center">
+        {/* Left: identity */}
+        <div>
           <div className="mb-6">
             <Image
               src="/images/profile.png"
