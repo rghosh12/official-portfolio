@@ -47,7 +47,29 @@ const config: Config = {
         muted: {
           DEFAULT: "var(--muted)",
           dark: "var(--muted-dark)",
+          foreground: "var(--muted)",
         },
+        // shadcn/ui token names, mapped onto the site palette
+        background: "var(--page-bg)",
+        foreground: "var(--text)",
+        primary: {
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
+        },
+        secondary: {
+          DEFAULT: "var(--surface-3)",
+          foreground: "var(--text)",
+        },
+        destructive: {
+          DEFAULT: "var(--error)",
+          foreground: "#ffffff",
+        },
+        card: {
+          DEFAULT: "var(--surface)",
+          foreground: "var(--text)",
+        },
+        input: "var(--border)",
+        ring: "var(--accent)",
         accent: {
           DEFAULT: "var(--accent)",
           hover: "var(--accent-hover)",

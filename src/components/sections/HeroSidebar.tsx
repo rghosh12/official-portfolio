@@ -1,17 +1,16 @@
 import { buildSkillCategories } from "@/lib/skills";
-import { SkillsAccordion } from "@/components/sections/SkillsAccordion";
+import { SkillsOrbit } from "@/components/sections/SkillsOrbit";
 
 export function HeroSidebar() {
+  // Resolved on the server so simple-icons never ships to the client.
   const categories = buildSkillCategories();
 
   return (
-    <div>
-      <div className="bg-[var(--surface-2)] border border-[var(--border)] rounded-2xl p-7">
-        <p className="label-mono text-[var(--muted)] mb-5">
-          Skills & Technologies
-        </p>
-        <SkillsAccordion categories={categories} compact />
-      </div>
+    <div className="w-full max-w-[480px] mx-auto lg:mx-0 lg:ml-auto">
+      <p className="label-mono text-[var(--muted)] text-center">
+        Skills & Technologies <span className="text-[var(--muted-dark)]">· select a node</span>
+      </p>
+      <SkillsOrbit categories={categories} />
     </div>
   );
 }
