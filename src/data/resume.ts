@@ -402,6 +402,7 @@ export const miniProjects = [
     id: "moba",
     title: "MoBa",
     context: "AWS PartyRock · AI App",
+    year: 2026,
     description:
       "An AI-powered cafe drink recommendation app built on AWS PartyRock. Helps users quickly choose boba or cafe drinks based on mood, weather, flavor preferences, caffeine level, and add-ons. Generates personalised drink recommendations, cafe suggestions, customisation tips, and drink visuals before purchase.",
     link: "https://partyrock.aws/u/rghosh/ut6Ry2FYD/MoBa",
