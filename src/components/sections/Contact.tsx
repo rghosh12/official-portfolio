@@ -47,7 +47,7 @@ export function Contact() {
 
       setStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-      
+
       setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
       setStatus("error");
@@ -77,7 +77,7 @@ export function Contact() {
                 Let&apos;s Connect
               </h3>
               <p className="text-[var(--muted)] mb-6">
-                Whether you have a question, want to collaborate, or just want to say hi, 
+                Whether you have a question, want to collaborate, or just want to say hi,
                 feel free to reach out. I&apos;ll get back to you as soon as possible.
               </p>
             </div>
@@ -222,7 +222,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--accent-foreground)] font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {status === "loading" ? (
                   <>

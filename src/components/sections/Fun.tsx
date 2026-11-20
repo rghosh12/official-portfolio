@@ -53,7 +53,7 @@ export function Fun() {
           </span>
           <span className="inline-flex items-center gap-2 text-xs text-[var(--muted)]">
             <span
-              className="w-3 h-3 rounded-sm border border-[var(--border)] bg-[#262626]"
+              className="w-3 h-3 rounded-sm border border-[var(--border)] bg-[var(--surface-3)]"
               aria-hidden
             />
             Not yet visited
