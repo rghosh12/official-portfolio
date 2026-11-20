@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/resume";
 import { HeroSidebar } from "@/components/sections/HeroSidebar";
+import { StripClock } from "@/components/ui/strip-clock";
 
 export function Hero() {
   return (
@@ -83,6 +84,8 @@ export function Hero() {
               <Mail size={16} /> Professional Email
             </a>
           </div>
+
+          <StripClock timeZone="America/Los_Angeles" place="Seattle, WA" className="mt-8" />
         </div>
 
         <HeroSidebar />
