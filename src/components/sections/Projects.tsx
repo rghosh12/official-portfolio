@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import Timeline, { type TimelineEntry } from "@/components/ui/timeline-02";
 import {
   researchProjects,
   personalProjects,
@@ -19,166 +19,204 @@ import {
   type ProjectTool,
 } from "@/data/resume";
 import { resolveSkillIcon } from "@/lib/skills";
+import { yearIn } from "@/lib/timeline";
+
+type ProjectLink = { href: string; label: string; kind: "link" | "github" };
+
+type ProjectView = {
+  id: string;
+  year: number;
+  category: string;
+  icon: LucideIcon;
+  title: string;
+  context?: string;
+  award?: string;
+  impact?: string;
+  bullets?: readonly string[];
+  description?: string;
+  tagline?: string | null;
+  tools?: readonly ProjectTool[];
+  links: ProjectLink[];
+};
+
+function requireYear(id: string, ...sources: (string | number | undefined | null)[]): number {
+  for (const s of sources) {
+    if (typeof s === "number") return s;
+    if (typeof s === "string") {
+      const y = yearIn(s);
+      if (y) return y;
+    }
+  }
+  throw new Error(`Project "${id}" has no year; add a year to its data.`);
+}
+
+function buildProjects(): ProjectView[] {
+  return [
+    ...researchProjects.map((p) => ({
+      id: p.id,
+      year: requireYear(p.id, p.context),
+      category: "Research",
+      icon: FlaskConical,
+      title: p.title,
+      context: p.context,
+      impact: p.impact,
+      bullets: p.bullets,
+      links: p.link ? [{ href: p.link, label: "View Project", kind: "link" as const }] : [],
+    })),
+    ...personalProjects.map((p) => ({
+      id: p.id,
+      year: requireYear(p.id, p.context),
+      category: "Personal",
+      icon: Code2,
+      title: p.title,
+      context: p.context,
+      impact: p.impact,
+      bullets: p.bullets,
+      links: p.link
+        ? [{ href: p.link, label: p.linkLabel ?? "View Project", kind: "link" as const }]
+        : [],
+    })),
+    ...hackathonProjects.map((p) => ({
+      id: p.id,
+      year: requireYear(p.id, p.event),
+      category: "Hackathon",
+      icon: Trophy,
+      title: p.title,
+      context: p.event,
+      award: p.award.replace(/^🏆\s*/, ""),
+      description: p.description,
+      tagline: p.tagline,
+      tools: p.tools,
+      links: p.link
+        ? [
+            {
+              href: p.link,
+              label: p.linkLabel ?? "View Project",
+              kind: p.linkLabel === "GitHub" ? ("github" as const) : ("link" as const),
+            },
+          ]
+        : [],
+    })),
+    ...miniProjects.map((p) => ({
+      id: p.id,
+      year: requireYear(p.id, "year" in p ? p.year : undefined, p.context),
+      category: "Mini",
+      icon: Sparkles,
+      title: p.title,
+      context: p.context,
+      description: p.description,
+      links: p.link ? [{ href: p.link, label: p.linkLabel, kind: "link" as const }] : [],
+    })),
+  ];
+}
 
 export function Projects() {
+  const entries: TimelineEntry[] = buildProjects().map((p, i) => ({
+    id: p.id,
+    startYear: p.year,
+    endYear: p.year,
+    order: p.year * 100 + i, // keeps Research → Personal → Hackathon → Mini within a year
+    full: <ProjectEntry project={p} />,
+  }));
+
   return (
-    <Section id="projects">
-      <SectionHeading label="Work" title="Projects" />
-
-      {/* Research */}
-      <ProjectGroup title="Research Projects">
-        {researchProjects.map((p, index) => (
-          <AnimatedSection key={p.id} delay={index * 50} animation="fade-up">
-            <ProjectCard icon={FlaskConical} category="Research">
-              <ProjectBody
-                title={p.title}
-                context={p.context}
-                impact={p.impact}
-                bullet={p.bullets[0]}
-                links={p.link ? [{ href: p.link, label: "View Project", kind: "link" }] : []}
-              />
-            </ProjectCard>
-          </AnimatedSection>
-        ))}
-      </ProjectGroup>
-
-      {/* Personal */}
-      <ProjectGroup title="Personal Projects">
-        {personalProjects.map((p, index) => (
-          <AnimatedSection key={p.id} delay={index * 50} animation="fade-up">
-            <ProjectCard icon={Code2} category="Personal">
-              <ProjectBody
-                title={p.title}
-                context={p.context}
-                impact={p.impact}
-                bullet={p.bullets[0]}
-                links={
-                  p.link
-                    ? [{ href: p.link, label: p.linkLabel ?? "View Project", kind: "link" }]
-                    : []
-                }
-              />
-            </ProjectCard>
-          </AnimatedSection>
-        ))}
-      </ProjectGroup>
-
-      {/* Hackathon */}
-      <ProjectGroup title="Hackathon Projects">
-        {hackathonProjects.map((p, index) => (
-          <AnimatedSection key={p.id} delay={index * 50} animation="scale-in">
-            <ProjectCard icon={Trophy} category="Hackathon" award={p.award}>
-              <ProjectBody
-                title={p.title}
-                context={p.event}
-                description={p.description}
-                tagline={p.tagline}
-                tools={"tools" in p ? p.tools : undefined}
-                links={
-                  p.link
-                    ? [
-                        {
-                          href: p.link,
-                          label: p.linkLabel ?? "View Project",
-                          kind: p.linkLabel === "GitHub" ? "github" : "link",
-                        },
-                      ]
-                    : []
-                }
-              />
-            </ProjectCard>
-          </AnimatedSection>
-        ))}
-      </ProjectGroup>
-
-      {/* Mini */}
-      <ProjectGroup title="Mini Projects">
-        {miniProjects.map((p, index) => (
-          <AnimatedSection key={p.id} delay={index * 50} animation="fade-up">
-            <ProjectCard icon={Sparkles} category="Mini">
-              <ProjectBody
-                title={p.title}
-                context={p.context}
-                description={p.description}
-                links={p.link ? [{ href: p.link, label: p.linkLabel, kind: "link" }] : []}
-              />
-            </ProjectCard>
-          </AnimatedSection>
-        ))}
-      </ProjectGroup>
+    <Section id="projects" className="pb-8 md:pb-10">
+      <SectionHeading
+        label="Work"
+        title="Projects"
+        description="Research, personal, hackathon and mini projects, grouped by year."
+      />
+      <Timeline
+        entries={entries}
+        noun={{ one: "project", many: "projects" }}
+        label="Projects timeline"
+      />
     </Section>
   );
 }
 
-// ─── Sub-components ─────────────────────────────────────────────────────────
+// ─── Entry card ─────────────────────────────────────────────────────────────
 
-function ProjectGroup({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function ProjectEntry({ project: p }: { project: ProjectView }) {
+  const Icon = p.icon;
   return (
-    <div className="mb-16 last:mb-0">
-      <h3 className="label-mono text-[var(--muted)] mb-6">
-        {title}
-      </h3>
-      <div className="grid md:grid-cols-2 gap-6">{children}</div>
-    </div>
-  );
-}
-
-function ProjectCard({
-  icon: Icon,
-  category,
-  award,
-  children,
-}: {
-  icon: LucideIcon;
-  category: string;
-  award?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="group h-full flex flex-col bg-[var(--surface-2)] border border-[var(--border)] rounded-xl overflow-hidden hover:border-[var(--accent)] transition-colors">
-      <div
-        className="relative h-20 flex items-center justify-between px-5"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(134,239,172,0.14) 0%, rgba(23,37,84,0.25) 100%)",
-        }}
-      >
-        <span className="w-10 h-10 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center">
-          <Icon size={18} className="text-[var(--accent)]" />
-        </span>
-        {award ? (
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--warning-light)]">
-            <Trophy size={13} className="fill-[var(--warning-light)]" />
-            {award.replace(/^🏆\s*/, "")}
+    <article className="bg-[var(--surface-2)] border border-[var(--border)] rounded-xl p-6 hover:border-[var(--accent)] transition-colors">
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <span className="inline-flex items-center gap-2">
+          <span className="w-8 h-8 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center">
+            <Icon size={15} className="text-[var(--accent)]" aria-hidden />
           </span>
-        ) : (
-          <span className="label-mono text-[var(--muted)]">
-            {category}
+          <span className="label-mono text-[var(--muted)]">{p.category}</span>
+        </span>
+        {p.award && (
+          <span className="inline-flex items-center gap-1.5 label-mono text-[var(--warning-light)]">
+            <Trophy size={12} className="fill-[var(--warning-light)]" aria-hidden />
+            {p.award}
           </span>
         )}
       </div>
 
-      <div className="flex flex-col flex-1 p-5">{children}</div>
-    </div>
+      <h3 className="text-lg font-normal tracking-[-0.01em] text-[var(--text)] leading-snug">
+        {p.title}
+      </h3>
+      {p.context && <p className="label-mono text-[var(--muted)] mt-1.5">{p.context}</p>}
+
+      {p.impact && (
+        <p className="text-sm text-[var(--accent-light)] mt-4 leading-relaxed">{p.impact}</p>
+      )}
+
+      {p.bullets && p.bullets.length > 0 && (
+        <ul className="flex flex-col gap-2 mt-3">
+          {p.bullets.map((b, i) => (
+            <li key={i} className="text-sm text-[var(--muted)] leading-relaxed pl-4 relative">
+              <span
+                className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-[var(--accent)]/60"
+                aria-hidden
+              />
+              {b}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {p.description && (
+        <p className="text-sm text-[var(--muted)] mt-3 leading-relaxed">{p.description}</p>
+      )}
+
+      {p.tagline && (
+        <p className="text-sm italic text-[var(--text-secondary)] mt-3 border-l-2 border-[var(--accent)] pl-3">
+          &ldquo;{p.tagline}&rdquo;
+        </p>
+      )}
+
+      {p.tools && p.tools.length > 0 && <ProjectTools tools={p.tools} />}
+
+      {p.links.length > 0 && (
+        <div className="pt-4 flex flex-wrap gap-4">
+          {p.links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--accent)] hover:text-[var(--accent-light)] transition-colors"
+            >
+              {l.kind === "github" ? <GitBranch size={13} /> : <ExtIcon size={13} />}
+              {l.label}
+              <ArrowUpRight size={13} className="opacity-70" />
+            </a>
+          ))}
+        </div>
+      )}
+    </article>
   );
 }
 
-type ProjectLink = { href: string; label: string; kind: "link" | "github" };
-
 function ProjectToolIcon({ tool }: { tool: ProjectTool }) {
   if (tool.image) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img src={tool.image} alt="" className="w-full h-full object-contain" />
-    );
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={tool.image} alt="" className="w-full h-full object-contain" />;
   }
-
   const icon = tool.icon ? resolveSkillIcon(tool.icon) : null;
   if (icon) {
     return (
@@ -195,9 +233,8 @@ function ProjectToolIcon({ tool }: { tool: ProjectTool }) {
       </svg>
     );
   }
-
   return (
-    <span className="text-xs font-bold text-[var(--accent)]">
+    <span className="text-xs font-medium text-[var(--accent)]">
       {tool.name.slice(0, 2).toUpperCase()}
     </span>
   );
@@ -206,10 +243,8 @@ function ProjectToolIcon({ tool }: { tool: ProjectTool }) {
 function ProjectTools({ tools }: { tools: readonly ProjectTool[] }) {
   return (
     <div className="mt-4">
-      <p className="label-mono text-[var(--muted)] mb-3">
-        Tools
-      </p>
-      <div className="grid grid-cols-2 gap-2">
+      <p className="label-mono text-[var(--muted)] mb-3">Tools</p>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         {tools.map((tool) => (
           <a
             key={tool.name}
@@ -217,84 +252,18 @@ function ProjectTools({ tools }: { tools: readonly ProjectTool[] }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Visit ${tool.name}`}
+            style={{ textDecoration: "none" }}
             className="group/tool flex flex-col items-center gap-2 p-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-colors"
           >
-            <div className="w-9 h-9 flex items-center justify-center">
+            <div className="w-8 h-8 flex items-center justify-center">
               <ProjectToolIcon tool={tool} />
             </div>
-            <span className="text-xs font-medium text-[var(--text-secondary)] text-center group-hover/tool:text-[var(--accent)] transition-colors">
+            <span className="text-xs text-[var(--text-secondary)] text-center group-hover/tool:text-[var(--accent)] transition-colors">
               {tool.name}
             </span>
           </a>
         ))}
       </div>
     </div>
-  );
-}
-
-function ProjectBody({
-  title,
-  context,
-  impact,
-  bullet,
-  description,
-  tagline,
-  tools,
-  links = [],
-}: {
-  title: string;
-  context?: string;
-  impact?: string;
-  bullet?: string;
-  description?: string;
-  tagline?: string | null;
-  tools?: readonly ProjectTool[];
-  links?: ProjectLink[];
-}) {
-  return (
-    <>
-      <h4 className="font-semibold text-[var(--text)] text-base leading-snug">{title}</h4>
-      {context && <p className="text-xs text-[var(--muted)] mt-1">{context}</p>}
-
-      {impact && (
-        <p className="text-sm text-[var(--accent-light)] mt-3 leading-relaxed">{impact}</p>
-      )}
-
-      {bullet && (
-        <p className="text-sm text-[var(--muted)] mt-2 leading-relaxed">{bullet}</p>
-      )}
-
-      {description && (
-        <p className="text-sm text-[var(--muted)] mt-3 leading-relaxed line-clamp-4">
-          {description}
-        </p>
-      )}
-
-      {tagline && (
-        <p className="text-sm italic text-[var(--text-secondary)] mt-3 border-l-2 border-[var(--accent)] pl-3">
-          &ldquo;{tagline}&rdquo;
-        </p>
-      )}
-
-      {tools && tools.length > 0 && <ProjectTools tools={tools} />}
-
-      {links.length > 0 && (
-        <div className="mt-auto pt-4 flex flex-wrap gap-4">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--accent)] hover:text-[var(--accent-light)] transition-colors"
-            >
-              {l.kind === "github" ? <GitBranch size={13} /> : <ExtIcon size={13} />}
-              {l.label}
-              <ArrowUpRight size={13} className="opacity-70" />
-            </a>
-          ))}
-        </div>
-      )}
-    </>
   );
 }

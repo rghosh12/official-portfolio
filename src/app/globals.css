@@ -303,6 +303,10 @@ p a:hover, li a:hover {
   text-decoration-color: currentColor;
 }
 
+/* Hide scrollbars on scroll containers that show their own affordances */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
 /* Small metadata labels: mono, sentence case, muted */
 .label-mono {
   font-family: var(--font-mono);
