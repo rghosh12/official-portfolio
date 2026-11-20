@@ -380,7 +380,7 @@ export const Timeline = ({
             aria-label="Years"
             aria-orientation="vertical"
             onKeyDown={onRailKey}
-            className="relative flex flex-row lg:flex-col items-center gap-3 lg:gap-6 overflow-auto no-scrollbar w-full lg:h-full px-[40%] lg:px-0 lg:py-40 py-1"
+            className="relative flex flex-row lg:flex-col items-center gap-3 lg:gap-4 overflow-auto no-scrollbar w-full lg:h-full px-[40%] lg:px-0 lg:py-40 pt-1"
           >
             <span
               aria-hidden
@@ -397,12 +397,10 @@ export const Timeline = ({
                 tabIndex={i === index ? 0 : -1}
                 variant={i === index ? "default" : "outline"}
                 onClick={() => goTo(i, "click")}
+                // Selected year is the primary face, latched down (aria-selected).
                 className={cn(
-                  "relative rounded-full !px-5 h-9 shrink-0 font-mono text-sm font-normal transition-all duration-300",
-                  i === index
-                    ? "shadow-glow"
-                    : "bg-[var(--surface)] border-[var(--border)] text-[var(--muted)] hover:bg-[var(--surface-3)] hover:text-[var(--text)]",
-                  armed && i === index + armed && "border-[var(--accent)] text-[var(--accent)] animate-pulse"
+                  "shrink-0 tabular-nums",
+                  armed && i === index + armed && "box-btn--hint animate-pulse"
                 )}
               >
                 {y}

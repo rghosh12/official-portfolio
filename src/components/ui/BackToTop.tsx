@@ -27,10 +27,10 @@ export function BackToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-8 right-8 z-50 p-4 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--accent-foreground)] rounded-full shadow-lg transition-all group min-w-[56px] min-h-[56px] flex items-center justify-center"
+      className="box-btn box-btn--primary box-btn--icon !w-12 !h-12 fixed bottom-8 right-8 z-50"
       aria-label="Back to top"
     >
-      <ArrowUp size={24} />
+      <ArrowUp size={20} aria-hidden="true" />
     </button>
   )
 }

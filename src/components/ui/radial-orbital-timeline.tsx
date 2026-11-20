@@ -303,7 +303,7 @@ export default function RadialOrbitalTimeline({
                           <LinkIcon size={10} className="mr-1" aria-hidden="true" />
                           <span className="label-mono">Connected</span>
                         </div>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-x-1.5 gap-y-0.5">
                           {item.relatedIds.map((relatedId) => {
                             const relatedItem = timelineData.find((i) => i.id === relatedId);
                             if (!relatedItem) return null;
@@ -312,14 +312,13 @@ export default function RadialOrbitalTimeline({
                                 key={relatedId}
                                 variant="outline"
                                 size="sm"
-                                className="h-6 px-2 py-0 text-[11px] font-normal rounded-md border-[var(--border)] bg-transparent text-[var(--text-secondary)] hover:bg-[var(--surface-3)] hover:text-[var(--accent)]"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   toggleItem(relatedId);
                                 }}
                               >
                                 {relatedItem.title}
-                                <ArrowRight size={9} className="ml-1 opacity-60" aria-hidden="true" />
+                                <ArrowRight size={10} className="opacity-60" aria-hidden="true" />
                               </Button>
                             );
                           })}

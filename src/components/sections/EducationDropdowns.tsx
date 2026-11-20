@@ -13,14 +13,14 @@ function EducationDropdown({ section }: { section: DropdownSection }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border border-[var(--border)] rounded-lg overflow-hidden">
+    <div>
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-white/5 transition-colors"
+        className="box-btn box-btn--block justify-between text-left"
         aria-expanded={isOpen}
       >
-        <span className="text-sm font-semibold text-[var(--text)]">{section.label}</span>
+        <span>{section.label}</span>
         <ChevronDown
           className={`w-4 h-4 text-[var(--muted)] transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
@@ -33,7 +33,7 @@ function EducationDropdown({ section }: { section: DropdownSection }) {
           isOpen ? "max-h-[720px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="px-4 pb-4">
+        <div className="px-4 pt-2 pb-3">
           {section.items.length > 0 ? (
             <ul className="flex flex-col gap-2">
               {section.items.map((item) => (
