@@ -28,17 +28,17 @@ export function Hero() {
             Rupak<br />Ghosh
           </h1>
 
-          <div className="flex flex-wrap items-center gap-4 mb-8">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-3 mb-8">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--accent-foreground)] text-sm font-semibold transition-colors"
+              className="box-btn box-btn--primary"
             >
               View Projects
               <ArrowRight size={16} />
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text)] text-sm font-semibold transition-colors"
+              className="box-btn"
             >
               Get in Touch
             </Link>
@@ -46,7 +46,7 @@ export function Hero() {
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[var(--border)] hover:border-[var(--accent)] text-[var(--muted)] hover:text-[var(--text)] text-sm font-semibold transition-colors"
+              className="box-btn"
             >
               <Download size={16} />
               View Résumé
