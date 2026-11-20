@@ -121,7 +121,7 @@ function ProjectGroup({
 }) {
   return (
     <div className="mb-16 last:mb-0">
-      <h3 className="text-xs font-semibold tracking-wider uppercase text-[var(--muted)] mb-6">
+      <h3 className="label-mono text-[var(--muted)] mb-6">
         {title}
       </h3>
       <div className="grid md:grid-cols-2 gap-6">{children}</div>
@@ -146,7 +146,7 @@ function ProjectCard({
         className="relative h-20 flex items-center justify-between px-5"
         style={{
           background:
-            "linear-gradient(135deg, rgba(139,157,131,0.18) 0%, rgba(115,128,104,0.06) 100%)",
+            "linear-gradient(135deg, rgba(134,239,172,0.14) 0%, rgba(23,37,84,0.25) 100%)",
         }}
       >
         <span className="w-10 h-10 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center">
@@ -158,7 +158,7 @@ function ProjectCard({
             {award.replace(/^🏆\s*/, "")}
           </span>
         ) : (
-          <span className="text-[10px] font-semibold tracking-[0.15em] uppercase text-[var(--muted)]">
+          <span className="label-mono text-[var(--muted)]">
             {category}
           </span>
         )}
@@ -206,7 +206,7 @@ function ProjectToolIcon({ tool }: { tool: ProjectTool }) {
 function ProjectTools({ tools }: { tools: readonly ProjectTool[] }) {
   return (
     <div className="mt-4">
-      <p className="text-xs font-semibold tracking-wider uppercase text-[var(--muted)] mb-3">
+      <p className="label-mono text-[var(--muted)] mb-3">
         Tools
       </p>
       <div className="grid grid-cols-2 gap-2">

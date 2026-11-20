@@ -24,14 +24,14 @@ export function Hero() {
             />
           </div>
 
-          <h1 className="text-6xl sm:text-7xl font-extrabold tracking-tighter mb-6 leading-[0.95]">
+          <h1 className="text-6xl sm:text-7xl font-normal tracking-[-0.04em] mb-6 leading-[0.95]">
             Rupak<br />Ghosh
           </h1>
 
           <div className="flex flex-wrap items-center gap-4 mb-8">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white text-sm font-semibold transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--accent-foreground)] text-sm font-semibold transition-colors"
             >
               View Projects
               <ArrowRight size={16} />

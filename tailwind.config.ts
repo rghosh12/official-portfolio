@@ -7,8 +7,16 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)"],
+        serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
         display: ["var(--font-display)"],
+      },
+      // Cognition-style restraint: nothing heavier than medium.
+      fontWeight: {
+        semibold: "500",
+        bold: "500",
+        extrabold: "500",
+        black: "500",
       },
       fontSize: {
         xs: "var(--text-xs)",
@@ -44,6 +52,7 @@ const config: Config = {
           DEFAULT: "var(--accent)",
           hover: "var(--accent-hover)",
           light: "var(--accent-light)",
+          foreground: "var(--accent-foreground)",
         },
         success: {
           DEFAULT: "var(--success)",
