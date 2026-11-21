@@ -85,18 +85,18 @@ export const continents: Continent[] = [
 ];
 
 /**
- * Continent colours, pushed further apart in hue than the original
- * (#11f801 / cyan / #f80001 / #eaf803 / orange / #9503c4) so neighbours
- * never read as the same colour. Light mode uses deeper tones so they
- * hold up on linen paper.
+ * Continent colours: earth tones that sit with the brown/sage palette but
+ * keep six clearly separate hues (green, teal, terracotta, ochre, rust,
+ * plum) so neighbouring continents never read as the same colour.
+ * Light mode uses deeper tones so they hold up on sage paper.
  */
 export const continentColors: Record<string, { dark: string; light: string }> = {
-  northAmerica: { dark: "#22E55E", light: "#15803D" }, // green
-  southAmerica: { dark: "#22C3EE", light: "#0369A1" }, // sky blue
-  europe:       { dark: "#FF3D6E", light: "#BE123C" }, // rose red
-  africa:       { dark: "#FFD21F", light: "#A16207" }, // yellow
-  asia:         { dark: "#FF8A1F", light: "#C2410C" }, // orange
-  australia:    { dark: "#B76BFF", light: "#7E22CE" }, // violet
+  northAmerica: { dark: "#9CB35A", light: "#56702A" }, // moss green
+  southAmerica: { dark: "#5FB3A5", light: "#2F6E66" }, // sage teal
+  europe:       { dark: "#D2643F", light: "#9A3A1C" }, // terracotta
+  africa:       { dark: "#E3B04B", light: "#8F6512" }, // ochre
+  asia:         { dark: "#C58A4F", light: "#7F4F24" }, // tan / rust
+  australia:    { dark: "#B07AA1", light: "#6E3F62" }, // dusty plum
 };
 
-export const dotBase = { dark: "#262626", light: "#D3CBBA" };
+export const dotBase = { dark: "#414833", light: "#CBCDB6" };

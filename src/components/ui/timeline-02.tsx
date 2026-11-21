@@ -428,7 +428,7 @@ export const Timeline = ({
                   animate="center"
                   exit="exit"
                   transition={transition}
-                  className="text-6xl lg:text-7xl xl:text-8xl font-normal tracking-[-0.04em] leading-none text-foreground tabular-nums"
+                  className="text-6xl lg:text-7xl xl:text-8xl font-normal tracking-[-0.03em] leading-none text-foreground tabular-nums"
                 >
                   {year}
                 </motion.h2>
