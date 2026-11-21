@@ -25,7 +25,7 @@ export function Hero() {
             />
           </div>
 
-          <h1 className="text-6xl sm:text-7xl font-normal tracking-[-0.04em] mb-6 leading-[0.95]">
+          <h1 className="text-6xl sm:text-7xl font-normal tracking-[-0.03em] mb-6 leading-[0.95]">
             Rupak<br />Ghosh
           </h1>
 

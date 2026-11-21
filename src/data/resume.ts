@@ -21,7 +21,7 @@ export const profile = {
 // ----------------------------------------------------------------
 
 /** ISO 3166-1 alpha-2 codes — update this list to change the map and count. */
-export const visitedCountryColor = "#D1CFC0";
+export const visitedCountryColor = "#A68A64";
 
 export const countriesVisited = [
   { code: "AT", name: "Austria" },
