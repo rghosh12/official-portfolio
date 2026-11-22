@@ -5,6 +5,8 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { BackToTop } from "@/components/ui/BackToTop";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { SkipToContent } from "@/components/ui/SkipToContent";
+import { IntroLoader } from "@/components/ui/IntroLoader";
+import { INTRO_SEEN_KEY } from "@/lib/intro";
 import { generateMetadata, generatePersonSchema, generateWebSiteSchema } from "@/lib/seo";
 
 export const metadata: Metadata = generateMetadata({
@@ -31,6 +33,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
+        {/* Before first paint: apply the saved theme and skip the intro on repeat visits */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var d=document.documentElement;if(sessionStorage.getItem("${INTRO_SEEN_KEY}"))d.setAttribute("data-intro-seen","1");var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t);}catch(e){}})();`,
+          }}
+        />
+        <noscript>
+          <style>{`.intro-overlay{display:none}`}</style>
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(generatePersonSchema()) }}
@@ -41,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body suppressHydrationWarning>
+        <IntroLoader />
         <SkipToContent />
         <ThemeProvider>
           <PageBackground />
