@@ -73,5 +73,11 @@ export function SkillsOrbit({ categories }: { categories: SkillCategory[] }) {
     })),
   }));
 
-  return <RadialOrbitalTimeline timelineData={timelineData} label="Skills and technologies" />;
+  return (
+    <RadialOrbitalTimeline
+      timelineData={timelineData}
+      label="Skills and technologies"
+      centerImage={{ src: "/logos/orbit-core.png", alt: "Logo" }}
+    />
+  );
 }

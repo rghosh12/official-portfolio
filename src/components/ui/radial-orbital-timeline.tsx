@@ -30,6 +30,8 @@ interface RadialOrbitalTimelineProps {
   timelineData: TimelineItem[];
   /** Accessible label for the whole orbit. */
   label?: string;
+  /** Image shown in the centre of the orbit (replaces the default orb). */
+  centerImage?: { src: string; alt: string };
 }
 
 const MAX_RADIUS = 190;
@@ -46,6 +48,7 @@ const LABEL_ALLOWANCE = 52; // keeps node labels inside the container
 export default function RadialOrbitalTimeline({
   timelineData,
   label = "Orbital timeline",
+  centerImage,
 }: RadialOrbitalTimelineProps) {
   const [activeNodeId, setActiveNodeId] = useState<number | null>(null);
   const [rotationAngle, setRotationAngle] = useState(0);
@@ -163,6 +166,34 @@ export default function RadialOrbitalTimeline({
         style={{ perspective: "1000px" }}
       >
         {/* Core */}
+        {centerImage ? (
+          <div className="absolute w-[4.5rem] h-[4.5rem] flex items-center justify-center z-10 pointer-events-none">
+            {/* rings pulse outward; the logo itself stays still */}
+            <div
+              className="absolute w-[6rem] h-[6rem] rounded-full border animate-ping opacity-60"
+              style={{ borderColor: "color-mix(in srgb, var(--accent) 35%, transparent)" }}
+            />
+            <div
+              className="absolute w-[7.25rem] h-[7.25rem] rounded-full border animate-ping opacity-40"
+              style={{
+                borderColor: "color-mix(in srgb, var(--accent) 20%, transparent)",
+                animationDelay: "0.5s",
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={centerImage.src}
+              alt={centerImage.alt}
+              width={72}
+              height={72}
+              className="relative w-full h-full rounded-full"
+              style={{
+                boxShadow:
+                  "0 0 0 2px var(--border-hover), 0 0 28px color-mix(in srgb, var(--accent) 30%, transparent)",
+              }}
+            />
+          </div>
+        ) : (
         <div className="absolute w-14 h-14 rounded-full bg-gradient-to-br from-[var(--accent)] via-[var(--accent-hover)] to-[var(--border-hover)] animate-pulse flex items-center justify-center z-10 pointer-events-none">
           <div className="absolute w-[4.5rem] h-[4.5rem] rounded-full border border-[var(--accent)]/30 animate-ping opacity-70" />
           <div
@@ -171,6 +202,7 @@ export default function RadialOrbitalTimeline({
           />
           <div className="w-7 h-7 rounded-full bg-[var(--page-bg)]/80 backdrop-blur-md" />
         </div>
+        )}
 
         {/* Orbit ring */}
         <div
