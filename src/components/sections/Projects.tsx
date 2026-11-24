@@ -121,11 +121,7 @@ export function Projects() {
 
   return (
     <Section id="projects" className="pb-8 md:pb-10">
-      <SectionHeading
-        label="Work"
-        title="Projects"
-        description="Research, personal, hackathon and mini projects, grouped by year."
-      />
+      <SectionHeading title="Projects" />
       <Timeline
         entries={entries}
         noun={{ one: "project", many: "projects" }}
@@ -159,7 +155,11 @@ function ProjectEntry({ project: p }: { project: ProjectView }) {
       <h3 className="text-lg font-medium tracking-[-0.01em] text-[var(--text)] leading-snug">
         {p.title}
       </h3>
-      {p.context && <p className="label-mono text-[var(--muted)] mt-1.5">{p.context}</p>}
+      {p.context && (
+        <p className="label-mono text-[var(--muted)] mt-1.5">
+          {p.context.replace(/\s*·\s*(19|20)\d{2}$/, "")}
+        </p>
+      )}
 
       {p.impact && (
         <p className="text-sm text-[var(--accent-light)] mt-4 leading-relaxed">{p.impact}</p>

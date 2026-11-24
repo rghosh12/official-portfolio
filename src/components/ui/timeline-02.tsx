@@ -435,14 +435,6 @@ export const Timeline = ({
               </AnimatePresence>
             </div>
           </div>
-          <div className="flex flex-col items-end lg:items-start gap-1.5 lg:mt-4">
-            <span className="label-mono text-[var(--muted)]">
-              {String(index + 1).padStart(2, "0")} / {String(years.length).padStart(2, "0")}
-            </span>
-            <span className="label-mono text-[var(--muted-dark)] hidden lg:block max-w-[16rem]">
-              Scroll to read. At the end of a year, scroll once more to move on.
-            </span>
-          </div>
         </div>
 
         {/* Entries */}

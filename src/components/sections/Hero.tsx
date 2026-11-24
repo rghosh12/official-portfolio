@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import { profile, experience, education } from "@/data/resume";
 import { StripClock } from "@/components/ui/strip-clock";
 import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
@@ -15,38 +15,22 @@ function shortOrg(org: string) {
 
 export function Hero() {
   const school = education[0];
-  const gradYear = school.graduation.match(/\d{4}/)?.[0];
   const current = experience.filter((e) => e.current).slice(0, 3);
   const city = profile.location.replace(/\s+\d{5}$/, "");
-
-  const socials = [
-    { href: profile.github, label: "GitHub", icon: Github, external: true },
-    { href: profile.linkedin, label: "LinkedIn", icon: Linkedin, external: true },
-    { href: `mailto:${profile.email}`, label: "Email", icon: Mail, external: false },
-    { href: `mailto:${profile.emailAlt}`, label: "Personal email", icon: Mail, external: false },
-  ];
 
   return (
     <section id="home" className="px-6 sm:px-12 lg:px-24 pt-24 pb-16 lg:pt-28 lg:pb-24">
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[minmax(0,1fr)_21rem] gap-12 lg:gap-16 items-start">
         {/* ── Intro ───────────────────────────────────────────── */}
         <div>
-          <div className="flex items-center gap-4 mb-8">
-            <Image
-              src="/images/profile.png"
-              alt="Rupak Ghosh"
-              width={96}
-              height={96}
-              priority
-              className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover object-center border border-[var(--border-hover)]"
-            />
-            <div className="flex flex-col gap-1">
-              <span className="label-mono text-[var(--accent)]">{school.institution}</span>
-              {gradYear && (
-                <span className="label-mono text-[var(--muted)]">Class of {gradYear}</span>
-              )}
-            </div>
-          </div>
+          <Image
+            src="/images/profile.png"
+            alt="Rupak Ghosh"
+            width={96}
+            height={96}
+            priority
+            className="mb-8 w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover object-center border border-[var(--border-hover)]"
+          />
 
           <h1 className="text-6xl sm:text-7xl font-[600] tracking-[-0.03em] leading-[0.95] text-[var(--text)]">
             Rupak
@@ -54,11 +38,7 @@ export function Hero() {
             Ghosh
           </h1>
 
-          <p className="mt-6 text-base sm:text-lg font-medium text-[var(--accent)] font-mono">
-            {profile.title.replace(/\s*\|\s*/g, " · ")}
-          </p>
-
-          <p className="mt-5 max-w-2xl text-[var(--text-secondary)] leading-relaxed">
+          <p className="mt-6 max-w-2xl text-[var(--text-secondary)] leading-relaxed">
             {profile.summary}
           </p>
 
@@ -73,22 +53,6 @@ export function Hero() {
               trailingIcon={<ArrowUpRight size={16} aria-hidden="true" />}
             />
           </div>
-
-          <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            {socials.map(({ href, label, icon: Icon, external }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
-                  style={{ textDecoration: "none" }}
-                >
-                  <Icon size={16} aria-hidden="true" />
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
 
         {/* ── Beside the name: local time + profile at a glance ── */}
@@ -102,7 +66,16 @@ export function Hero() {
           <div className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--surface)] p-5">
             <dl className="flex flex-col gap-5">
               <div>
-                <dt className="label-mono text-[var(--muted)] mb-2">Currently</dt>
+                <dt className="flex items-center justify-between label-mono text-[var(--muted)] mb-2">
+                  Currently
+                  <Link
+                    href="/experience"
+                    className="inline-flex items-center gap-1 text-[var(--accent)] hover:text-[var(--text)] transition-colors"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Experience <ArrowUpRight size={12} aria-hidden="true" />
+                  </Link>
+                </dt>
                 <dd>
                   <ul className="flex flex-col gap-2.5">
                     {current.map((role) => (
@@ -127,20 +100,6 @@ export function Hero() {
                 </dd>
               </div>
 
-              <div className="border-t border-[var(--border)] pt-4 flex items-center justify-between gap-3">
-                <dt className="sr-only">Based in</dt>
-                <dd className="inline-flex items-center gap-2 font-mono text-sm text-[var(--text)]">
-                  <MapPin size={14} className="text-[var(--accent)]" aria-hidden="true" />
-                  {city}
-                </dd>
-                <Link
-                  href="/experience"
-                  className="inline-flex items-center gap-1 label-mono text-[var(--accent)] hover:text-[var(--text)] transition-colors"
-                  style={{ textDecoration: "none" }}
-                >
-                  Experience <ArrowUpRight size={12} aria-hidden="true" />
-                </Link>
-              </div>
             </dl>
           </div>
         </aside>

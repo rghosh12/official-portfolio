@@ -33,10 +33,11 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
+        // header-earth: the header keeps its earth palette under the site theme
+        "header-earth fixed top-0 inset-x-0 z-50 transition-all duration-300",
         scrolled
           ? "bg-[var(--surface)] backdrop-blur-md border-b border-[var(--border)] shadow-lg shadow-black/20"
-          : "bg-transparent",
+          : "bg-[var(--page-bg)] border-b border-transparent",
         shouldHide && "-translate-y-full"
       )}
       role="banner"

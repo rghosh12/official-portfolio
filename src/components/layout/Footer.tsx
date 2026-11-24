@@ -6,9 +6,6 @@ export function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <p className="text-sm font-semibold text-[var(--text)]">{profile.name}</p>
-          <p className="text-xs text-[var(--muted)] mt-0.5">
-            {profile.location} · {profile.email}
-          </p>
         </div>
         <nav className="flex items-center gap-5" aria-label="Footer navigation">
           <a

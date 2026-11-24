@@ -65,7 +65,6 @@ export function Contact() {
   return (
     <Section id="contact">
         <SectionHeading
-          label="Get In Touch"
           title="Contact"
           description="Open to research collaborations, internships, and interesting conversations."
         />
@@ -73,15 +72,6 @@ export function Contact() {
         <div className="grid lg:grid-cols-2 gap-12 mt-12">
           {/* Contact Info — professional channels first */}
           <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-semibold text-[var(--text)] mb-4">
-                Let&apos;s Connect
-              </h3>
-              <p className="text-[var(--muted)] mb-6">
-                Whether you have a question, want to collaborate, or just want to say hi,
-                feel free to reach out. I&apos;ll get back to you as soon as possible.
-              </p>
-            </div>
 
             <ContactCard
               icon={<Mail size={18} />}
@@ -110,9 +100,6 @@ export function Contact() {
 
           {/* Contact Form */}
           <div className="bg-[var(--surface-2)] border border-[var(--border)] rounded-2xl p-8">
-            <h3 className="text-xl font-semibold text-[var(--text)] mb-6">
-              Send a Message
-            </h3>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Honeypot — hidden from real users, catches bots */}

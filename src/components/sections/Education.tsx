@@ -8,7 +8,7 @@ import { EducationDropdowns } from "@/components/sections/EducationDropdowns";
 export function Education() {
   return (
     <Section id="education">
-      <SectionHeading label="Background" title="Education" />
+      <SectionHeading title="Education" />
 
       <div className="flex flex-col gap-5">
         {education.map((edu, i) => {
