@@ -13,7 +13,6 @@ import { buildSkillCategories } from "@/lib/skills";
 export function Skills() {
   const categories = buildSkillCategories();
   const byKey = Object.fromEntries(categories.map((c) => [c.key, c]));
-  const total = categories.reduce((n, c) => n + c.items.length, 0);
 
   const iconsFor = (...keys: string[]) =>
     keys.flatMap((k) =>
@@ -32,14 +31,7 @@ export function Skills() {
 
   return (
     <Section id="skills" className="pb-0 md:pb-0 border-t border-[var(--border)]">
-      <SectionHeading
-        label="Toolkit"
-        title="Skills & Technologies"
-        description={`${total} tools across ${categories.length} areas: ${categories
-          .map((c) => c.label)
-          .join(", ")
-          .replace(/, ([^,]*)$/, " and $1")}.`}
-      />
+      <SectionHeading title="Skills & Technologies" />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((category) => (

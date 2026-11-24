@@ -99,4 +99,4 @@ export const continentColors: Record<string, { dark: string; light: string }> = 
   australia:    { dark: "#B07AA1", light: "#6E3F62" }, // dusty plum
 };
 
-export const dotBase = { dark: "#414833", light: "#CBCDB6" };
+export const dotBase = { dark: "#252E37", light: "#D5D9DD" };

@@ -8,9 +8,7 @@ export function Fun() {
   return (
     <Section id="fun">
       <SectionHeading
-        label="Beyond the lab"
         title="Fun"
-        description="Personal milestones and places explored along the way."
       />
 
       <div className="grid sm:grid-cols-2 gap-5 mb-8">

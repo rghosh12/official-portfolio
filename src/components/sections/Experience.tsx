@@ -21,11 +21,7 @@ export function Experience() {
 
   return (
     <Section id="experience" className="pb-8 md:pb-10">
-      <SectionHeading
-        label="Experience"
-        title="Professional & Research Experience"
-        description="Ordered by the year each role began. Roles that run into later years carry forward at the top of those years."
-      />
+      <SectionHeading title="Professional & Research Experience" />
       <Timeline
         entries={entries}
         noun={{ one: "new role", many: "new roles" }}

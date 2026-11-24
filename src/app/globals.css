@@ -9,40 +9,40 @@
 :root {
   /* ─── Minimalist Color System ──────────────────────────── */
   /* Base colors - Refined neutrals */
-  /* Palette: earth (Coolors 582F0E→333D29) - forest ground, sage ink, tan primary */
-  --surface:   rgba(58, 65, 46, 0.95);        /* card #01021a */
-  --surface-2: rgba(52, 59, 41, 0.95);
-  --surface-3: rgba(85, 93, 64, 0.92);      /* #172554 tint */
-  --border:    #4D553C;
-  --border-hover: #656D4A;
-  --text:      #F4F6EC;
-  --text-secondary: #E2E6D2;                /* theme foreground */
-  --muted:     #C9CFB0;                     /* theme ring */
-  --muted-dark: #A9B08C;                    /* theme muted-foreground */
+  /* Palette: Walnut Grove (21st.dev) - slate ground, warm ink, copper primary, green accent */
+  --surface:   rgba(24, 31, 37, 0.95);        /* card #01021a */
+  --surface-2: rgba(29, 37, 45, 0.95);
+  --surface-3: rgba(37, 46, 55, 0.95);      /* #172554 tint */
+  --border:    #2B333B;
+  --border-hover: #394046;
+  --text:      #F1F0EE;
+  --text-secondary: #D9D7D3;                /* theme foreground */
+  --muted:     #ABB2BA;                     /* theme ring */
+  --muted-dark: #8D959E;                    /* theme muted-foreground */
 
-  /* Brand colors - Tan / brown */
-  --accent:    #D9B98C;
-  --accent-hover: #A68A64;
-  --accent-light: #C2C5AA;
-  --accent-foreground: #2B1A08;
+  /* Brand colors - Copper (green accent in --accent-light) */
+  --accent:    #CF8859;
+  --accent-hover: #AC6739;
+  --accent-light: #68B186;
+  --accent-foreground: #1A1310;
 
   /* Page backdrop (static, restrained) */
-  --page-bg:   #2A3222;
-  --page-glow: rgba(166, 138, 100, 0.07);
+  --page-bg:   #14191F;
+  --page-glow: rgba(172, 103, 57, 0.06);
 
   /* Semantic colors - Clear and accessible */
-  --success:   #10b981;
-  --success-light: #34d399;
+  --success:   #68B186;
+  --success-light: #8CC7A3;
   --warning:   #f59e0b;
   --warning-light: #fbbf24;
-  --error:     #EF4444;
+  --error:     #D74242;
   --error-light: #f87171;
   --info:      #06b6d4;
   --info-light: #22d3ee;
 
   /* Gradient colors - Modern and refined */
-  --gradient-primary: linear-gradient(135deg, #A68A64 0%, #936639 100%);
-  --gradient-accent: linear-gradient(135deg, #B6AD90 0%, #A68A64 100%);
+  --gradient-primary: linear-gradient(135deg, #AC6739 0%, #815131 100%);
+  --gradient-accent: linear-gradient(135deg, #CF8859 0%, #AC6739 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --gradient-cosmic: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
 
@@ -138,8 +138,8 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
-  --shadow-glow: 0 0 20px rgba(166, 138, 100, 0.2);
-  --shadow-glow-lg: 0 0 40px rgba(166, 138, 100, 0.28);
+  --shadow-glow: 0 0 20px rgba(172, 103, 57, 0.2);
+  --shadow-glow-lg: 0 0 40px rgba(172, 103, 57, 0.28);
 
   /* ─── Border Radius ─────────────────────────────────────── */
   --radius-sm: 0.25rem;   /* 4px */
@@ -173,33 +173,33 @@
 
 [data-theme="light"] {
   /* Base colors - Clean, minimal light mode */
-  /* Earth light: sage paper, forest ink, brown primary */
-  --surface:   rgba(240, 241, 231, 0.96);
-  --surface-2: rgba(233, 234, 222, 0.96);
-  --surface-3: rgba(194, 197, 170, 0.9);
-  --border:    #CBCDB6;
-  --border-hover: #A4AC86;
-  --text:      #1C2316;
-  --text-secondary: #28301F;
-  --muted:     #3F4630;
-  --muted-dark: #545B3D;
+  /* Walnut Grove light: warm paper, slate ink, copper primary */
+  --surface:   rgba(255, 255, 255, 0.96);
+  --surface-2: rgba(246, 247, 248, 0.96);
+  --surface-3: rgba(238, 240, 241, 0.95);
+  --border:    #D5D9DD;
+  --border-hover: #B5BCC3;
+  --text:      #1D2630;
+  --text-secondary: #364049;
+  --muted:     #5B6670;
+  --muted-dark: #67737E;
 
-  /* Brand colors - Brown */
-  --accent:    #6B4019;
-  --accent-hover: #582F0E;
-  --accent-light: #6B4019;
-  --accent-foreground: #F5EFE6;
+  /* Brand colors - Copper */
+  --accent:    #815131;
+  --accent-hover: #6B4227;
+  --accent-light: #3D664E;
+  --accent-foreground: #FBFAF9;
 
   /* Page backdrop (static, restrained) */
-  --page-bg:   #E3E5D6;
-  --page-glow: rgba(127, 79, 36, 0.05);
+  --page-bg:   #FBFAF9;
+  --page-glow: rgba(129, 81, 49, 0.04);
 
   /* Semantic colors - Clear for light mode */
-  --success:   #059669;
-  --success-light: #10b981;
+  --success:   #3D664E;
+  --success-light: #4C7D60;
   --warning:   #d97706;
   --warning-light: #f59e0b;
-  --error:     #DC2626;
+  --error:     #B82E2E;
   --error-light: #ef4444;
   --info:      #0891b2;
   --info-light: #06b6d4;
@@ -211,8 +211,8 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 20px rgba(127, 79, 36, 0.14);
-  --shadow-glow-lg: 0 0 40px rgba(127, 79, 36, 0.2);
+  --shadow-glow: 0 0 20px rgba(129, 81, 49, 0.14);
+  --shadow-glow-lg: 0 0 40px rgba(129, 81, 49, 0.2);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -684,6 +684,40 @@ html[data-intro-seen] .intro-overlay { display: none; }
 @keyframes counter-ccw {
   from { transform: rotate(var(--counter-offset, 0deg)); }
   to   { transform: rotate(calc(var(--counter-offset, 0deg) + 360deg)); }
+}
+
+/* The site header keeps the earth palette it had before Walnut Grove */
+.header-earth {
+  --surface: rgba(58, 65, 46, 0.95);
+  --surface-2: rgba(52, 59, 41, 0.95);
+  --surface-3: rgba(85, 93, 64, 0.92);
+  --border: #4D553C;
+  --border-hover: #656D4A;
+  --text: #F4F6EC;
+  --text-secondary: #E2E6D2;
+  --muted: #C9CFB0;
+  --muted-dark: #A9B08C;
+  --accent: #D9B98C;
+  --accent-hover: #A68A64;
+  --accent-light: #C2C5AA;
+  --accent-foreground: #2B1A08;
+  --page-bg: #2A3222;
+}
+[data-theme="light"] .header-earth {
+  --surface: rgba(240, 241, 231, 0.96);
+  --surface-2: rgba(233, 234, 222, 0.96);
+  --surface-3: rgba(194, 197, 170, 0.9);
+  --border: #CBCDB6;
+  --border-hover: #A4AC86;
+  --text: #1C2316;
+  --text-secondary: #28301F;
+  --muted: #3F4630;
+  --muted-dark: #545B3D;
+  --accent: #6B4019;
+  --accent-hover: #582F0E;
+  --accent-light: #6B4019;
+  --accent-foreground: #F5EFE6;
+  --page-bg: #E3E5D6;
 }
 
 /* Hide scrollbars on scroll containers that show their own affordances */
