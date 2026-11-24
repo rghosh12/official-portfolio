@@ -668,6 +668,24 @@ html[data-intro-seen] .intro-overlay { display: none; }
   .intro-identity { top: calc(50% + 6rem); }
 }
 
+/* Orbiting circles (ui/orbiting-circles-02): rings rotate, icons counter-rotate to stay upright */
+@keyframes orbit-cw {
+  from { transform: rotate(var(--start-angle)); }
+  to   { transform: rotate(calc(var(--start-angle) + 360deg)); }
+}
+@keyframes orbit-ccw {
+  from { transform: rotate(var(--start-angle)); }
+  to   { transform: rotate(calc(var(--start-angle) - 360deg)); }
+}
+@keyframes counter-cw {
+  from { transform: rotate(var(--counter-offset, 0deg)); }
+  to   { transform: rotate(calc(var(--counter-offset, 0deg) - 360deg)); }
+}
+@keyframes counter-ccw {
+  from { transform: rotate(var(--counter-offset, 0deg)); }
+  to   { transform: rotate(calc(var(--counter-offset, 0deg) + 360deg)); }
+}
+
 /* Hide scrollbars on scroll containers that show their own affordances */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
