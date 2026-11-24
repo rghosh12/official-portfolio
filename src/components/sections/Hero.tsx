@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/resume";
 import { HeroSidebar } from "@/components/sections/HeroSidebar";
 import { StripClock } from "@/components/ui/strip-clock";
+import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
 
 export function Hero() {
   return (
@@ -25,33 +25,20 @@ export function Hero() {
             />
           </div>
 
-          <h1 className="text-6xl sm:text-7xl font-normal tracking-[-0.03em] mb-6 leading-[0.95]">
+          <h1 className="text-6xl sm:text-7xl font-[600] tracking-[-0.03em] mb-6 leading-[0.95] text-[var(--text)]">
             Rupak<br />Ghosh
           </h1>
 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-3 mb-8">
-            <Link
-              href="/projects"
-              className="box-btn box-btn--primary"
-            >
-              View Projects
-              <ArrowRight size={16} />
-            </Link>
-            <Link
-              href="/contact"
-              className="box-btn"
-            >
-              Get in Touch
-            </Link>
-            <a
+            <InteractiveHoverLink href="/projects" text="View Projects" variant="primary" />
+            <InteractiveHoverLink href="/contact" text="Get in Touch" />
+            <InteractiveHoverLink
               href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="box-btn"
-            >
-              <Download size={16} />
-              View Résumé
-            </a>
+              external
+              text="View Résumé"
+              icon={<Download size={16} aria-hidden="true" />}
+              trailingIcon={<ArrowUpRight size={16} aria-hidden="true" />}
+            />
           </div>
 
           <div className="flex flex-wrap items-center gap-5 text-[var(--muted)]">

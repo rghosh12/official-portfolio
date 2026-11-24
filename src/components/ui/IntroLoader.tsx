@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { ProgressRadial } from "@/components/ui/progress";
 import { profile } from "@/data/resume";
 import { INTRO_SEEN_KEY } from "@/lib/intro";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 /**
  * First-visit intro: a branded loader with a radial progress gauge that
@@ -155,9 +156,11 @@ export function IntroLoader() {
           © {new Date().getFullYear()} {profile.name}
         </div>
         <div className="intro-corner intro-corner--br">
-          <button type="button" className="box-btn box-btn--sm" onClick={open}>
-            Skip intro
-          </button>
+          <InteractiveHoverButton
+            text="Skip intro"
+            onClick={open}
+            className="min-h-[2.25rem] px-4 text-[0.6875rem]"
+          />
         </div>
       </div>
 

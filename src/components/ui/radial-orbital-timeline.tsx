@@ -284,7 +284,7 @@ export default function RadialOrbitalTimeline({
                       </Badge>
                       <span className="label-mono text-[var(--muted)]">{item.meta}</span>
                     </div>
-                    <CardTitle className="text-base font-normal tracking-[-0.01em] mt-2">
+                    <CardTitle className="text-base font-medium tracking-[-0.01em] mt-2">
                       {item.title}
                     </CardTitle>
                   </CardHeader>
