@@ -156,7 +156,7 @@ function ProjectEntry({ project: p }: { project: ProjectView }) {
         )}
       </div>
 
-      <h3 className="text-lg font-normal tracking-[-0.01em] text-[var(--text)] leading-snug">
+      <h3 className="text-lg font-medium tracking-[-0.01em] text-[var(--text)] leading-snug">
         {p.title}
       </h3>
       {p.context && <p className="label-mono text-[var(--muted)] mt-1.5">{p.context}</p>}

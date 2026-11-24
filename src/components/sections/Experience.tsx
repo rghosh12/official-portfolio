@@ -76,7 +76,7 @@ function ExperienceCard({ exp }: { exp: ExperienceItem }) {
           <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-2 mb-4">
             <div>
               <span className="label-mono text-[var(--muted)]">{exp.type}</span>
-              <h3 className="text-lg font-normal tracking-[-0.01em] text-[var(--text)] leading-snug mt-0.5">
+              <h3 className="text-lg font-medium tracking-[-0.01em] text-[var(--text)] leading-snug mt-0.5">
                 {exp.role}
               </h3>
               <p className="text-[var(--accent)] text-sm mt-1">{exp.org}</p>

@@ -5,6 +5,7 @@ import { Mail, Link2, GitBranch, Send, Check, AlertCircle } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
 import { profile } from "@/data/resume";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -219,23 +220,22 @@ export function Contact() {
                 </div>
               )}
 
-              <button
+              <InteractiveHoverButton
                 type="submit"
                 disabled={status === "loading"}
-                className="box-btn box-btn--primary box-btn--lg box-btn--block"
-              >
-                {status === "loading" ? (
-                  <>
-                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden="true" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send size={18} />
-                    Send Message
-                  </>
-                )}
-              </button>
+                variant="primary"
+                size="lg"
+                block
+                text={status === "loading" ? "Sending..." : "Send Message"}
+                icon={
+                  status === "loading" ? (
+                    <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden="true" />
+                  ) : (
+                    <Send size={16} aria-hidden="true" />
+                  )
+                }
+                trailingIcon={<Send size={16} aria-hidden="true" />}
+              />
             </form>
           </div>
         </div>

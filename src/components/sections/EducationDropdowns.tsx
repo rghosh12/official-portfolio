@@ -22,7 +22,7 @@ function EducationDropdown({ section }: { section: DropdownSection }) {
       >
         <span>{section.label}</span>
         <ChevronDown
-          className={`w-4 h-4 text-[var(--muted)] transition-transform duration-300 ${
+          className={`w-4 h-4 transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
           }`}
         />

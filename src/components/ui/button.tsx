@@ -4,13 +4,13 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-// Every solid variant renders the site's pressable "box button" (globals.css).
+// Every solid variant renders the site's hover-fill pill button (globals.css .box-btn).
 // ghost/link stay flat: they are text-level actions, not buttons-as-objects.
 const buttonVariants = cva("", {
     variants: {
       variant: {
         default: "box-btn box-btn--primary",
-        destructive: "box-btn [--face:var(--error)] [--face-hover:var(--error-light)] [--depth:#7f1d1d] text-white hover:text-white",
+        destructive: "box-btn border-[var(--error)] text-[var(--error)] [--accent:var(--error)] [--accent-foreground:#fff]",
         outline: "box-btn",
         secondary: "box-btn",
         ghost:

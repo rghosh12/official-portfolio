@@ -21,12 +21,12 @@ export function ThemeToggle() {
       {theme === "dark" ? (
         <Sun
           size={18}
-          className="text-[var(--accent)] group-hover:rotate-180 transition-transform duration-300"
+          className="group-hover:rotate-180 transition-transform duration-300"
         />
       ) : (
         <Moon
           size={18}
-          className="text-[var(--accent)] group-hover:-rotate-90 transition-transform duration-300"
+          className="group-hover:-rotate-90 transition-transform duration-300"
         />
       )}
     </button>
